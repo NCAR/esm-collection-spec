@@ -1,2 +1,2 @@
-# esm-catalog-spec
-Earth System Model Catalog specification
+# esm-collection-spec
+Earth System Model Collection specification
