@@ -1,0 +1,25 @@
+collection:
+  extension:
+    type: ''
+    columns: []
+    # define the set of attributes for which common values indicate
+    # datasets that can be merged or concatenated. `intake-esm` applies
+    # `df.groupby(compatible_dset_attrs)` to determine the unique groups
+    compatible_dset_attrs: []
+
+    # define a set of new dimensions across which to
+    # concatenate and construct a return dataset.
+    concat_newdim_attrs: []
+
+
+    # define a set of collection attributes across which to
+    # merge returned datasets
+    merge_attrs: []
+
+  # Every collection csv file is required to have the following columns
+  required_columns:
+    - data_format
+    - direct_access
+    - path
+    - resource_type
+    - variable_id

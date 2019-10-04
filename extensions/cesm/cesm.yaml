@@ -1,0 +1,23 @@
+collection:
+  extension:
+    type: cesm
+    columns:
+      - experiment
+      - component
+      - frequency
+      - member_id
+    # define the set of attributes for which common values indicate
+    # datasets that can be merged or concatenated. `intake-esm` applies
+    # `df.groupby(compatible_dset_attrs)` to determine the unique groups
+    compatible_dset_attrs:
+      - component
+      - experiment
+      - frequency
+    # define a set of new dimensions across which to
+    # concatenate and construct a return dataset.
+    concat_newdim_attrs:
+      - member_id
+    # define a set of collection attributes across which to
+    # merge returned datasets
+    merge_attrs:
+      - variable_id

@@ -1,0 +1,31 @@
+collection:
+  extension:
+    type: cmip5
+    columns:
+      - activity
+      - member_id
+      - experiment
+      - frequency
+      - institute
+      - model
+      - modeling_realm
+    # define the set of attributes for which common values indicate
+    # datasets that can be merged or concatenated. `intake-esm` applies
+    # `df.groupby(compatible_dset_attrs)` to determine the unique groups
+    compatible_dset_attrs:
+      - institute
+      - model
+      - experiment
+      - frequency
+      - modeling_realm
+
+    # define a set of new dimensions across which to
+    # concatenate and construct a return dataset.
+    concat_newdim_attrs:
+      - member_id
+
+
+    # define a set of collection attributes across which to
+    # merge returned datasets
+    merge_attrs:
+      - variable_id
