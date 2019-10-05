@@ -1,36 +1,30 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "catalog.json#",
-  "title": "STAC Catalog Specification",
-  "description": "This object represents Catalogs in a SpatioTemporal Asset Catalog.",
+  "$id": "collection.json#",
+  "title": "ESM Collection Specification",
+  "description": "This object represents Collections in a Earth System Model Catalog.",
   "allOf": [
     {
-      "$ref": "#/definitions/catalog"
+      "$ref": "#/definitions/collection"
     }
   ],
   "definitions": {
-    "catalog": {
-      "title": "Catalog",
+    "collection": {
+      "title": "Collection",
       "type": "object",
       "required": [
-        "stac_version",
+        "esmcat_version",
         "id",
         "description",
-        "links"
+        "catalog_file",
+        "attributes",
+        "assets"
       ],
       "properties": {
-        "stac_version": {
-          "title": "STAC version",
+        "esmcat_version": {
+          "title": "ESM Catalog version",
           "type": "string",
-          "const": "0.8.0"
-        },
-        "stac_extensions": {
-          "title": "STAC extensions",
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string"
-          }
+          "const": "0.1.0"
         },
         "id": {
           "title": "Identifier",
@@ -44,72 +38,59 @@
           "title": "Description",
           "type": "string"
         },
-        "links": {
-          "title": "Links",
+        "catalog_file": {
+          "title": "Catalog File",
+          "type": "string"
+        },
+        "attributes": {
+          "title": "Attributes",
+          "description": "Asset attributes",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/link"
+            "$ref": "#/definitions/attribute"
           }
         },
-        "summaries": {
-          "$ref": "#/definitions/summaries"
+        "assets": {
+          "title": "Assets",
+          "description": "Assets file",
+          "type": "object",
+          "required": [
+              "column_name"
+            ],
+          "properties": {
+            "column_name": {
+              "title": "Column Name",
+              "description": "The name of the column containing the path to the asset.",
+              "type": "string"
+            },
+            "format": {
+              "title": "Format",
+              "description": "File format of the assets.",
+              "type": "string"
+            },
+            "format_column_name": {
+              "title": "Format Column Name",
+              "description": "The column name which contains the data format.",
+              "type": "string"
+            }
+          }
         }
       }
     },
-    "summaries": {
-      "type": "object",
-      "additionalProperties": {
-        "oneOf": [
-          {
-            "title": "Stats",
-            "type": "object",
-            "required": [
-              "min",
-              "max"
-            ],
-            "properties": {
-              "min": {
-                "title": "Minimum value",
-                "type": ["number", "string"]
-              },
-              "max": {
-                "title": "Maximum value",
-                "type": ["number", "string"]
-              }
-            }
-          },
-          {
-            "title": "Set of values",
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "description": "Any data type could occur."
-            }
-          }
-        ]
-      }
-    },
-    "link": {
+    "attribute": {
       "type": "object",
       "required": [
-        "rel",
-        "href"
+        "column_name"
       ],
       "properties": {
-        "href": {
-          "title": "Link reference",
+        "column_name": {
+          "title": "Column Name",
+          "description": "Name of the attribute column in the assets csv file.",
           "type": "string"
         },
-        "rel": {
-          "title": "Link relation type",
-          "type": "string"
-        },
-        "type": {
-          "title": "Link type",
-          "type": "string"
-        },
-        "title": {
-          "title": "Link title",
+        "vocabulary": {
+          "title": "Vocabulary",
+          "description": "Link to the controlled vocabulary for the attribute in the format of a URL.",
           "type": "string"
         }
       }
