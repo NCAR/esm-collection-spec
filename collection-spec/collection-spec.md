@@ -14,7 +14,7 @@ The collection is described is a single json file, inspired by the STAC spec.
 | description  | string        | **REQUIRED.** Detailed multi-line description to fully explain the collection. [CommonMark 0.28](http://commonmark.org/) syntax MAY be used for rich text representation. |
 | catalog_file | string | **REQUIRED.** Path to a the CSV file with the catalog contents. |
 | attributes | [[Attribute Object](#attribute-object)] | **REQUIRED.** A list of attribute columns in the dataset. |
-| assets | [Asset Object](#assets-object) | **REQUIRED**. Description o how the assets (data files) are referenced in the CSV catalog file.
+| assets | [Assets Object](#assets-object) | **REQUIRED**. Description of how the assets (data files) are referenced in the CSV catalog file.
 
 ### Attribute Object
 
