@@ -1,4 +1,4 @@
-# ESM Catalog Spec
+# ESM Catalog Specification
 
 The Earth System Model Catalog specification describes a way of cataloging large datasets with a homogeneous metadata structure, such as those produced by the Coupled Model Intercomparison Project of the World Climate Research Programme.
 It was designed within the Pangeo project, growing out of various ad-hoc attempts at building catalogs of convenience for CMIP6 and related dataset in the months before the [2019 CMIP6 Hackathon](https://cmip6hack.github.io).
@@ -28,6 +28,9 @@ Here we try to justify this choice.
   Climate models generally simulate the whole planet, under hundreds or thousands of different scenarios. Not to mention weird calendars, aquaplanets, exoplanets, etc.
   We played around with STAC, but it didn't feel like the right fit.
 
+- Our ultimate aims are similar to those of the [Earth System Grid Federation Search Tool](https://github.com/ESGF/esg-search).
+  However, we are not actually running an ESGF node, so it didn't seem sensible to try to use that tool directly. We do, however, optionally reference the same [controlled vocabularies](https://github.com/WCRP-CMIP/CMIP6_CVs) as the ESGF search tool.  
+
 - [AOSPy](https://aospy.readthedocs.io/en/stable/index.html) is a workflow manager aimed at similar data ensembles.
   The data model of AOSPy is very similar to the one in ESM Catalog.
   However, the actual data catalog is described in python code, rather than text files.
@@ -44,8 +47,49 @@ The decision to make a new spec was ultimately driven by the timeline of the CMI
 
 ## The Specification
 
-### Catalog Descriptor
+The ESM Catalog specification consists of three parts:
+
+### Collection Specification
+
+The _collection_ specification provides metadata about the catalog, telling us what we expect to find inside and how to open it.
+The descriptor is a single json file, inspired by the STAC spec.
+
+```json
+{
+  "esmcat_version": "0.1.0",
+  "id": "sample",
+  "description": "This is a very basic sample ESM collection.",
+  "catalog_file": "sample_catalog.csv",
+  "attributes": [
+    {
+      "column_name": "activity_id",
+      "vocabulary": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_activity_id.json"
+    },
+    {
+      "column_name": "source_id",
+      "vocabulary": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_source_id.json"
+    }
+  ],
+  "files": {
+    "column_name": "path",
+    "format": "zarr"
+  }
+}
+```
 
 ### Catalog
 
+The collection points to a single catalog.
+A catalog is a CSV file.
+The meaning of the columns in the csv file is defined by the parent collection.
+
+```csv
+activity_id,source_id,path
+CMIP,ACCESS-CM2,gs://pangeo-data/store1.zarr
+CMIP,GISS-E2-1-G,gs://pangeo-data/store1.zarr
+```
+
 ### Data Files
+
+The data files can be either netCDF or Zarr.
+They should be either URIs or full filesystem paths.
