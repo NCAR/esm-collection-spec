@@ -1,0 +1,20 @@
+{
+  "esmcat_version": "0.1.0",
+  "id": "sample",
+  "description": "This is a very basic sample ESM collection.",
+  "catalog_file": "sample_catalog.csv",
+  "attributes": [
+    {
+      "column_name": "activity_id",
+      "vocabulary": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_activity_id.json"
+    },
+    {
+      "column_name": "source_id",
+      "vocabulary": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_source_id.json"
+    }
+  ],
+  "assets": {
+    "column_name": "path",
+    "format": "zarr"
+  }
+}

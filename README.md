@@ -14,10 +14,10 @@ Here we try to justify this choice.
 
 - The [THREDDS Client Catalog Specification
 ](https://www.unidata.ucar.edu/software/tds/current/catalog/InvCatalogSpec.html)
-  is a excellent, full-featured, mature specification aimed at a similar type of datasets.
+  is an excellent, full-featured, mature specification aimed at a similar type of datasets.
   We probably could have used the THREDDS spec here, and avoided defining a new one.
-  However, we are not actually planning to use THREDDS
-  It is in XML and is controlled by Unidata.
+  However, we are not actually planning to use THREDDS.
+  The spec is in XML and is controlled by Unidata (not open for pull requests).
   For the cloud, some innovation is likely needed.
   We were looking for something simpler and more open to hacking from the community.
 
@@ -70,7 +70,7 @@ The descriptor is a single json file, inspired by the STAC spec.
       "vocabulary": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_source_id.json"
     }
   ],
-  "files": {
+  "assets": {
     "column_name": "path",
     "format": "zarr"
   }
@@ -89,7 +89,7 @@ CMIP,ACCESS-CM2,gs://pangeo-data/store1.zarr
 CMIP,GISS-E2-1-G,gs://pangeo-data/store1.zarr
 ```
 
-### Data Files
+### Assets (Data Files)
 
-The data files can be either netCDF or Zarr.
+The data assets can be either netCDF or Zarr.
 They should be either URIs or full filesystem paths.
