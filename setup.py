@@ -23,7 +23,7 @@ CLASSIFIERS = [
 ]
 
 setup(
-    name='esmcat-validator',
+    name='esmcol-validator',
     long_description_content_type='text/markdown',
     description='A package to validate ESM Collection files',
     long_description=long_description,
@@ -32,13 +32,13 @@ setup(
     maintainer_email='abanihi@ucar.edu',
     classifiers=CLASSIFIERS,
     url='https://github.com/NCAR/esm-collection-spec',
-    packages=['esmcat_validator'],
+    packages=['esmcol_validator'],
     include_package_data=True,
     install_requires=install_requires,
     license='Apache 2.0',
     zip_safe=False,
-    entry_points={'console_scripts': ['esmcat-validator = esmcat_validator.cli:main']},
-    keywords='intake-esm',
+    entry_points={'console_scripts': ['esmcol-validator = esmcol_validator.cli:main']},
+    keywords='intake, esm, catalog',
     use_scm_version={'version_scheme': 'post-release', 'local_scheme': 'dirty-tag'},
     setup_requires=['setuptools_scm', 'setuptools>=30.3.0'],
 )

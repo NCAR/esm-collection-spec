@@ -13,7 +13,7 @@ from jsonschema import ValidationError, validate
 logger = logging.getLogger(__name__)
 
 
-class Esmcat:
+class Esmcol:
     def __init__(self, version='master', input_type='', filename=''):
         self.input_type = input_type
         self.filename = filename
@@ -33,17 +33,17 @@ class VersionException(Exception):
     pass
 
 
-class EsmcatValidate:
-    def __init__(self, esmcat_file, esmcat_spec_dirs=None, version='master', log_level='CRITICAL'):
-        """ Validate an ESMCat file
+class EsmcolValidate:
+    def __init__(self, esmcol_file, esmcol_spec_dirs=None, version='master', log_level='CRITICAL'):
+        """ Validate an ESMCol file
         Parameters
         ----------
-        esmcat_file : str
+        esmcol_file : str
               File to validate
-        esmcat_spec_dirs : list
+        esmcol_spec_dirs : list
             List of local specification directories to check for JSON schema files.
         version : str, defaults to `master`
-            ESMCat version to validate against. Uses github tags from the esm-collection-repo. e.g.: v0.1.0
+            ESMcat version to validate against. Uses github tags from the esm-collection-repo. e.g.: v0.1.0
         log_level : str
             Level of logging to report
         """
@@ -58,11 +58,11 @@ class EsmcatValidate:
             level=numeric_log_level,
         )
 
-        logging.info('ESMCat Validator Started.')
+        logging.info('ESMCol Validator Started.')
         self.esmcat_version = version
-        self.esmcat_file = esmcat_file.strip()
+        self.esmcol_file = esmcol_file.strip()
         self.dirpath = tempfile.mkdtemp()
-        self.esmcat_spec_dirs = self.check_none(esmcat_spec_dirs)
+        self.esmcol_spec_dirs = self.check_none(esmcol_spec_dirs)
 
         self.message = []
         self.status = {'collections': {'valid': 0, 'invalid': 0}, 'unknown': 0}
@@ -94,28 +94,28 @@ class EsmcatValidate:
 
         Returns
         -------
-        ESMCat spec in json format
+        ESMCol spec in json format
         """
         spec_name = spec
 
-        if self.esmcat_spec_dirs is None:
+        if self.esmcol_spec_dirs is None:
             try:
-                logging.debug('Gathering ESMCat specs from remote.')
-                url = getattr(Esmcat, f'{spec_name}_schema_url')
+                logging.debug('Gathering ESMCol specs from remote.')
+                url = getattr(Esmcol, f'{spec_name}_schema_url')
                 spec = requests.get(url(self.esmcat_version)).json()
                 valid_dir = True
 
             except Exception:
-                logger.exception('ESMCat Download Error')
-                raise VersionException(f'Could not download ESMCat specification')
+                logger.exception('ESMCol Download Error')
+                raise VersionException(f'Could not download ESMCol specification')
         else:
             valid_dir = False
-            for esmcat_spec_dir in self.esmcat_spec_dirs:
-                spec_file = Path(esmcat_spec_dir) / spec_name / '.json'
+            for esmcol_spec_dir in self.esmcol_spec_dirs:
+                spec_file = Path(esmcol_spec_dir) / spec_name / '.json'
                 if spec_file.is_file():
                     valid_dir = True
                     try:
-                        logging.debug('Gather ESMCat specs from local directory.')
+                        logging.debug('Gather ESMCol specs from local directory.')
                         with open(spec_file, 'r') as f:
                             spec = json.load(f)
 
@@ -124,13 +124,13 @@ class EsmcatValidate:
                             logger.critical(
                                 f'Houston, we have a problem! Could not find spec file {spec_file}'
                             )
-                            url = getattr(Esmcat, f'{spec_name}_schema_url')
+                            url = getattr(Esmcol, f'{spec_name}_schema_url')
                             spec = requests.get(url(self.esmcat_version)).json()
 
                         except:
                             logger.exception(
-                                'The ESMCat specification file does not exist or does not match the ESMCat file you are trying '
-                                'to validate. Please check your esmcat_spec_dirs path.'
+                                'The ESMCol specification file does not exist or does not match the ESMCol file you are trying '
+                                'to validate. Please check your esmcol_spec_dirs path.'
                             )
                             sys.exit(1)
                     except Exception as e:
@@ -145,36 +145,36 @@ class EsmcatValidate:
                 fp.write(json.dumps(spec))
         else:
             logger.exception(
-                'The ESMCat specification file does not exist or does not match the ESMCat file you are trying '
-                'to validate. Please check your esmcat_spec_dirs path.'
+                'The ESMCol specification file does not exist or does not match the ESMCol file you are trying '
+                'to validate. Please check your esmcol_spec_dirs path.'
             )
             sys.exit(1)
 
         return spec
 
     def validate_json(self, content, schema):
-        """ Validate ESMCat
+        """ Validate ESMCol
         Parameters
         ----------
         content : dict
-             input ESMCat file content
+             input ESMCol file content
         schema : dict
-             schema of ESMCat
+             schema of ESMCol
 
         Returns
         -------
         validation message
         """
         try:
-            logging.info('Validating ESMCat')
+            logging.info('Validating ESMCol')
             validate(content, schema)
             return True, None
         except ValidationError as e:
-            logger.warning('ESMCat Validation Error')
+            logger.warning('ESMCol Validation Error')
             return False, f'{e.message} of {list(e.path)}'
 
         except Exception as e:
-            logger.exception('ESMCat error')
+            logger.exception('ESMCol error')
             return False, f'{e}'
 
     @staticmethod
@@ -204,12 +204,12 @@ class EsmcatValidate:
             return False
 
     def fetch_and_parse_file(self, input_path):
-        """ Fetch and parse ESMCat file.
+        """ Fetch and parse ESMCol file.
 
         Parameters
         ----------
         input_path : str
-             ESMCat file to get and read
+             ESMCol file to get and read
 
         Returns
         -------
@@ -221,12 +221,12 @@ class EsmcatValidate:
 
         try:
             if self.is_valid_url(input_path):
-                logger.info('Loading ESMCat from URL')
+                logger.info('Loading ESMCol from URL')
                 resp = requests.get(input_path)
                 data = resp.json()
             else:
                 with open(input_path) as f:
-                    logger.info('Loading ESMCat from filesystem')
+                    logger.info('Loading ESMCol from filesystem')
                     data = json.load(f)
 
         except JSONDecodeError:
@@ -236,7 +236,7 @@ class EsmcatValidate:
             err_message['error_message'] = f'{input_path} is not Valid JSON'
 
         except FileNotFoundError:
-            logger.exception('ESMCat File Not Found')
+            logger.exception('ESMCol File Not Found')
             err_message['valid_esmcol'] = False
             err_message['error_type'] = 'FileNotFoundError'
             err_message['error_message'] = f'{input_path} cannot be found'
@@ -287,7 +287,7 @@ class EsmcatValidate:
         -------
         message : json
         """
-        message, status = self._validate(self.esmcat_file)
+        message, status = self._validate(self.esmcol_file)
         self.status = self._update_status(self.status, status)
         self.message.append(message)
 
