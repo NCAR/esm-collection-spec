@@ -1,5 +1,12 @@
 # ESM Catalog Specification
 
+- [ESM Catalog Specification](#esm-catalog-specification)
+  - [Background and Related Projects](#background-and-related-projects)
+  - [The Specification](#the-specification)
+    - [Collection Specification](#collection-specification)
+    - [Catalog](#catalog)
+    - [Assets (Data Files)](#assets-data-files)
+
 The Earth System Model Catalog specification describes a way of cataloging large datasets with a homogeneous metadata structure, such as those produced by the Coupled Model Intercomparison Project of the World Climate Research Programme.
 It was designed within the Pangeo project, growing out of various ad-hoc attempts at building catalogs of convenience for CMIP6 and related dataset in the months before the [2019 CMIP6 Hackathon](https://cmip6hack.github.io).
 
@@ -13,7 +20,7 @@ We are guilty of creating a new standard rather than reusing one of the many rea
 Here we try to justify this choice.
 
 - The [THREDDS Client Catalog Specification
-](https://www.unidata.ucar.edu/software/tds/current/catalog/InvCatalogSpec.html)
+  ](https://www.unidata.ucar.edu/software/tds/current/catalog/InvCatalogSpec.html)
   is an excellent, full-featured, mature specification aimed at a similar type of datasets.
   We probably could have used the THREDDS spec here, and avoided defining a new one.
   However, we are not actually planning to use THREDDS.
@@ -29,7 +36,7 @@ Here we try to justify this choice.
   We played around with STAC, but it didn't feel like the right fit.
 
 - Our ultimate aims are similar to those of the [Earth System Grid Federation Search Tool](https://github.com/ESGF/esg-search).
-  However, we are not actually running an ESGF node, so it didn't seem sensible to try to use that tool directly. We do, however, optionally reference the same [controlled vocabularies](https://github.com/WCRP-CMIP/CMIP6_CVs) as the ESGF search tool.  
+  However, we are not actually running an ESGF node, so it didn't seem sensible to try to use that tool directly. We do, however, optionally reference the same [controlled vocabularies](https://github.com/WCRP-CMIP/CMIP6_CVs) as the ESGF search tool.
 
 - [AOSPy](https://aospy.readthedocs.io/en/stable/index.html) is a workflow manager aimed at similar data ensembles.
   The data model of AOSPy is very similar to the one in ESM Catalog.
@@ -40,7 +47,6 @@ Here we try to justify this choice.
   The catalogs are described in YAMl, and the content of these YAML files is coupled tightly to the python library.
   While intake is very convenient, we thought it was important that the catalog itself be language independent.
   We hope that, once the ESM spec is complete enough, an intake driver for parsing it should be easy to implement.
-
 
 Ultimately, with sufficient time, we probably could have adopted any of the above tools and made it work for our needs.
 The decision to make a new spec was ultimately driven by the timeline of the CMIP6 hackathon--it seemed like the fastest route.
