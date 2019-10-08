@@ -2,7 +2,7 @@
   "esmcat_version": "0.1.0",
   "id": "glade-cmip6",
   "description": "This is an ESM collection for CMIP6 data residing on NCAR's GLADE file system.",
-  "catalog_file": "https://raw.githubusercontent.com/NCAR/esm-collection-spec/master/collection-spec/examples/sample-glade-cmip6-netcdf.csv",
+  "catalog_file": "sample-glade-cmip6-netcdf.csv",
   "attributes": [
     {
       "column_name": "activity_id",
