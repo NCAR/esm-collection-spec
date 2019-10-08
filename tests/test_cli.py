@@ -7,7 +7,9 @@ here = os.path.abspath(os.path.dirname(__file__))
 def test_cli_runner():
     esmcol_file = os.path.join(here, 'test_data/good_collection.json')
     p = subprocess.Popen(
-        ['esmcol-validator', esmcol_file], stdin=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+        ['esmcol-validator', esmcol_file, '--timer', '--verbose', '--log-level', 'DEBUG'],
+        stdin=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
     )
 
     p.communicate()
