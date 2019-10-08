@@ -32,7 +32,7 @@
     }
   ],
   "assets": {
-    "column_name": "zstore",
+    "column_name": "path",
     "format": "zarr"
   }
 }
