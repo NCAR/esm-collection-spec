@@ -1,0 +1,9 @@
+,activity_id,institution_id,source_id,experiment_id,member_id,table_id,variable_id,grid_label,path,unknown_column
+0,CMIP,EC-Earth-Consortium,EC-Earth3,historical,r22i1p1f1,day,psl,gr,/glade/collections/cmip/CMIP6/CMIP/EC-Earth-Consortium/EC-Earth3/historical/r22i1p1f1/day/psl/gr/v20190625/psl/psl_day_EC-Earth3_historical_r22i1p1f1_gr_19430101-19431231.nc
+1,PAMIP,NCAR,CESM2,pdSST-futAntSIC,r88i1p1f1,day,pr,gn,/glade/collections/cmip/CMIP6/PAMIP/NCAR/CESM2/pdSST-futAntSIC/r88i1p1f1/day/pr/gn/v20190614/pr_day_CESM2_pdSST-futAntSIC_r88i1p1f1_gn_20000601-20010601.nc
+2,CMIP,NASA-GISS,GISS-E2-1-G,historical,r6i1p1f1,Amon,rldscs,gn,/glade/collections/cmip/CMIP6/CMIP/NASA-GISS/GISS-E2-1-G/historical/r6i1p1f1/Amon/rldscs/gn/v20180829/rldscs/rldscs_Amon_GISS-E2-1-G_historical_r6i1p1f1_gn_190101-195012.nc
+3,CMIP,EC-Earth-Consortium,EC-Earth3,historical,r22i1p1f1,Omon,friver,gn,/glade/collections/cmip/CMIP6/CMIP/EC-Earth-Consortium/EC-Earth3/historical/r22i1p1f1/Omon/friver/gn/v20190625/friver/friver_Omon_EC-Earth3_historical_r22i1p1f1_gn_190101-190112.nc
+4,CMIP,EC-Earth-Consortium,EC-Earth3,historical,r21i1p1f1,Omon,wfo,gn,/glade/collections/cmip/CMIP6/CMIP/EC-Earth-Consortium/EC-Earth3/historical/r21i1p1f1/Omon/wfo/gn/v20190725/wfo/wfo_Omon_EC-Earth3_historical_r21i1p1f1_gn_191101-191112.nc
+5,CMIP,EC-Earth-Consortium,EC-Earth3,historical,r24i1p1f1,LImon,snm,gr,/glade/collections/cmip/CMIP6/CMIP/EC-Earth-Consortium/EC-Earth3/historical/r24i1p1f1/LImon/snm/gr/v20190411/snm/snm_LImon_EC-Earth3_historical_r24i1p1f1_gr_187801-187812.nc
+6,CMIP,IPSL,IPSL-CM6A-LR,historical,r30i1p1f1,SImon,sivols,gn,/glade/collections/cmip/CMIP6/CMIP/IPSL/IPSL-CM6A-LR/historical/r30i1p1f1/SImon/sivols/gn/v20180803/sivols/sivols_SImon_IPSL-CM6A-LR_historical_r30i1p1f1_gn_185001-201412.nc
+7,CMIP,NCAR,CESM2,historical,r1i1p1f1,Lmon,nbp,gn,/glade/collections/cmip/CMIP6/CMIP/NCAR/CESM2/historical/r1i1p1f1/Lmon/nbp/gn/v20190308/nbp_Lmon_CESM2_historical_r1i1p1f1_gn_185001-201412.nc
