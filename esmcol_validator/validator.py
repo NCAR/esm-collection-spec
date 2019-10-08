@@ -65,7 +65,11 @@ class EsmcolValidate:
         self.esmcol_spec_dirs = self.check_none(esmcol_spec_dirs)
 
         self.message = []
-        self.status = {'collections': {'valid': 0, 'invalid': 0}, 'unknown': 0}
+        self.status = {
+            'collections': {'valid': 0, 'invalid': 0},
+            'catalog_files': {'valid': 0, 'invalid': 0},
+            'unknown': 0,
+        }
 
     @staticmethod
     def check_none(input):
@@ -177,10 +181,57 @@ class EsmcolValidate:
             logger.exception('ESMCol error')
             return False, f'{e}'
 
+    def validate_csv(self, content):
+        """
+        Validate ESMCat file
+        Parameters
+        ----------
+        content : dict
+             input ESMCol file content
+
+        Returns
+        -------
+        validation message
+        """
+        import pandas as pd
+
+        catalog_file = content['catalog_file']
+        attributes = content['attributes']
+        assets = content['assets']
+        if ('format' in assets) and ('format_column_name' in assets):
+            return False, "'format' and 'format_column_name' are mutually exclusive"
+
+        columns = [item['column_name'] for item in attributes]
+        if 'format_column_name' in assets:
+            columns.append(assets['format_column_name'])
+
+        columns.append(assets['column_name'])
+
+        try:
+            df = pd.read_csv(catalog_file, index_col=0)
+            x = set(columns)
+            y = set(df.columns)
+
+            if x.issubset(y) and not y.issubset(x):
+                message = f'Catalog file: {catalog_file} contains { y - x} columns that are not found in esm collection spec.'
+                return False, message
+
+            else:
+                return True, None
+
+        except FileNotFoundError:
+            logger.exception(f'Catalog File: {catalog_file} does not exist.')
+            return False, f'Could not read catalog file: {catalog_file}'
+        except Exception as e:
+            logger.exception('ESMCat file error')
+            return False, f'{e}'
+
     @staticmethod
     def _update_status(old_status, new_status):
         old_status['collections']['valid'] += new_status['collections']['valid']
         old_status['collections']['invalid'] += new_status['collections']['invalid']
+        old_status['catalog_files']['valid'] += new_status['catalog_files']['valid']
+        old_status['catalog_files']['invalid'] += new_status['catalog_files']['invalid']
         old_status['unknown'] += new_status['unknown']
         return old_status
 
@@ -254,7 +305,11 @@ class EsmcolValidate:
         ]
 
         message = {}
-        status = {'collections': {'valid': 0, 'invalid': 0}, 'unknown': 0}
+        status = {
+            'collections': {'valid': 0, 'invalid': 0},
+            'catalog_files': {'valid': 0, 'invalid': 0},
+            'unknown': 0,
+        }
 
         esmcol_content, err_message = self.fetch_and_parse_file(esmcol_path)
         if err_message:
@@ -268,8 +323,12 @@ class EsmcolValidate:
             is_valid_esmcol, err_message = self.validate_json(
                 esmcol_content, self.fetch_spec('collection')
             )
+
+            is_valid_esmcat, cat_err_message = self.validate_csv(esmcol_content)
             message['valid_esmcol'] = is_valid_esmcol
             message['error_message'] = err_message
+            message['valid_esmcat'] = is_valid_esmcat
+            message['cat_error_message'] = cat_err_message
 
             if message['valid_esmcol']:
                 status['collections']['valid'] = 1
@@ -277,7 +336,13 @@ class EsmcolValidate:
             else:
                 status['collections']['invalid'] = 1
 
+            if message['valid_esmcat']:
+                status['catalog_files']['valid'] = 1
+            else:
+                status['catalog_files']['invalid'] = 1
+
         message['path'] = esmcol_path
+        print(status)
         return message, status
 
     def run(self):
