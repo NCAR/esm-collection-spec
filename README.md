@@ -1,3 +1,9 @@
+[![CircleCI](https://img.shields.io/circleci/project/github/NCAR/esm-collection-spec/master.svg?style=for-the-badge&logo=circleci)](https://circleci.com/gh/NCAR/esm-collection-spec)
+
+[![Codecov](https://img.shields.io/codecov/c/github/NCAR/esm-collection-spec.svg?style=for-the-badge)](https://codecov.io/gh/NCAR/esm-collection-spec)
+
+[![Python Package Index](https://img.shields.io/pypi/v/esm-collection-spec.svg?style=for-the-badge)](https://pypi.org/project/esm-collection-spec)
+
 # ESM Catalog Specification
 
 - [ESM Catalog Specification](#esm-catalog-specification)
