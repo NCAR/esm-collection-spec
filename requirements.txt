@@ -1,0 +1,4 @@
+requests>=2.19.1
+jsonschema>=3.0.1
+click
+pandas

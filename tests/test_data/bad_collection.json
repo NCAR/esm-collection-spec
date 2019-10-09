@@ -1,8 +1,8 @@
 {
   "esmcat_version": "0.1.0",
-  "id": "pangeo-cmip6",
-  "description": "This is an ESM collection for CMIP6 Zarr data residing in Pangeo's Google Storage.",
-  "catalog_file": "sample-pangeo-cmip6-zarr-stores.csv",
+  "id": "glade-cmip6",
+  "description": "This is an ESM collection for CMIP6 data residing on NCAR's GLADE file system.",
+  "catalog_file": "./tests/test_data/bad_catalog.csv",
   "attributes": [
     {
       "column_name": "activity_id",
@@ -33,6 +33,6 @@
   ],
   "assets": {
     "column_name": "path",
-    "format": "zarr"
+    "format": "netcdf"
   }
 }
