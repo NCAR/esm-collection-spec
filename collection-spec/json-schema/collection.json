@@ -74,6 +74,32 @@
               "type": "string"
             }
           }
+        },
+        "aggregation_control": {
+          "type": "object",
+          "required": [
+            "variable_column_name"
+          ],
+          "properties": {
+            "variable_column_name": {
+              "title": "Variable Column Name",
+              "description": "Name of the attribute column in csv file that contains the variable name.",
+              "type": "string"
+            },
+            "groupby_attrs": {
+              "title": "Group by attributes",
+              "description": "Column names (attributes) ...",
+              "type": "array"
+            },
+            "aggregations": {
+              "title": "Aggregation operations",
+              "description": "List of aggregations to apply to query results",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/aggregation"
+                }
+              }
+            }
         }
       }
     },
@@ -92,6 +118,29 @@
           "title": "Vocabulary",
           "description": "Link to the controlled vocabulary for the attribute in the format of a URL.",
           "type": "string"
+        }
+      }
+    },
+    "aggregation": {
+      "type": "object",
+      "required": [
+        "agg_type"
+      ],
+      "properties": {
+        "agg_type": {
+          "title": "Type of aggegration",
+          "description": "Type of aggegation operation to apply: join_new, join_existing, union",
+          "type": "string"
+        },
+        "attribute_name": {
+          "title": "Name of attribute",
+          "description": "Name of attribute to aggregate.",
+          "type": "string"
+        },
+        "options": {
+          "title": "Options",
+          "description": "Optional aggegration settings.",
+          "type": "object"
         }
       }
     }
