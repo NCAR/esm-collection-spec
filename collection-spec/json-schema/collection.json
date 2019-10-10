@@ -54,9 +54,7 @@
           "title": "Assets",
           "description": "Assets file",
           "type": "object",
-          "required": [
-              "column_name"
-            ],
+          "required": ["column_name"],
           "properties": {
             "column_name": {
               "title": "Column Name",
@@ -77,9 +75,7 @@
         },
         "aggregation_control": {
           "type": "object",
-          "required": [
-            "variable_column_name"
-          ],
+          "required": ["variable_column_name"],
           "properties": {
             "variable_column_name": {
               "title": "Variable Column Name",
@@ -97,17 +93,15 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/aggregation"
-                }
               }
             }
+          }
         }
       }
     },
     "attribute": {
       "type": "object",
-      "required": [
-        "column_name"
-      ],
+      "required": ["column_name"],
       "properties": {
         "column_name": {
           "title": "Column Name",
@@ -123,9 +117,7 @@
     },
     "aggregation": {
       "type": "object",
-      "required": [
-        "agg_type"
-      ],
+      "required": ["agg_type"],
       "properties": {
         "agg_type": {
           "title": "Type of aggegration",
@@ -134,7 +126,7 @@
         },
         "attribute_name": {
           "title": "Name of attribute",
-          "description": "Name of attribute to aggregate.",
+          "description": "Name of attribute across which to aggregate.",
           "type": "string"
         },
         "options": {
