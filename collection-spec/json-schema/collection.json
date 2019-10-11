@@ -121,7 +121,8 @@
       "properties": {
         "agg_type": {
           "title": "Type of aggegration",
-          "description": "Type of aggegation operation to apply: join_new, join_existing, union",
+          "description": "Type of aggegation operation to apply.",
+          "enum": ["join_new", "join_existing", "union"],
           "type": "string"
         },
         "attribute_name": {
