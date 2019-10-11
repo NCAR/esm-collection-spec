@@ -84,7 +84,7 @@
             },
             "groupby_attrs": {
               "title": "Group by attributes",
-              "description": "Column names (attributes) ...",
+              "description": "Column names (attributes) that define datasets that can be aggegrated.",
               "type": "array"
             },
             "aggregations": {
