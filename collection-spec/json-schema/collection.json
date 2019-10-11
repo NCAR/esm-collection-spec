@@ -132,7 +132,7 @@
         },
         "options": {
           "title": "Options",
-          "description": "Optional aggegration settings.",
+          "description": "Optional aggegration settings that are passed as keywords arguments to xarray.concat or xarray.merge. For `join_existing`, must contain something like {'dim': 'time'}.",
           "type": "object"
         }
       }
