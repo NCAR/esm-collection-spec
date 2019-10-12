@@ -29,6 +29,10 @@
     {
       "column_name": "grid_label",
       "vocabulary": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_grid_label.json"
+    },
+    {
+      "column_name": "time_range",
+      "vocabulary": ""
     }
   ],
   "assets": {
