@@ -54,9 +54,7 @@
           "title": "Assets",
           "description": "Assets file",
           "type": "object",
-          "required": [
-              "column_name"
-            ],
+          "required": ["column_name"],
           "properties": {
             "column_name": {
               "title": "Column Name",
@@ -74,14 +72,36 @@
               "type": "string"
             }
           }
+        },
+        "aggregation_control": {
+          "type": "object",
+          "required": ["variable_column_name"],
+          "properties": {
+            "variable_column_name": {
+              "title": "Variable Column Name",
+              "description": "Name of the attribute column in csv file that contains the variable name.",
+              "type": "string"
+            },
+            "groupby_attrs": {
+              "title": "Group by attributes",
+              "description": "Column names (attributes) that define datasets that can be aggegrated.",
+              "type": "array"
+            },
+            "aggregations": {
+              "title": "Aggregation operations",
+              "description": "List of aggregations to apply to query results",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/aggregation"
+              }
+            }
+          }
         }
       }
     },
     "attribute": {
       "type": "object",
-      "required": [
-        "column_name"
-      ],
+      "required": ["column_name"],
       "properties": {
         "column_name": {
           "title": "Column Name",
@@ -92,6 +112,28 @@
           "title": "Vocabulary",
           "description": "Link to the controlled vocabulary for the attribute in the format of a URL.",
           "type": "string"
+        }
+      }
+    },
+    "aggregation": {
+      "type": "object",
+      "required": ["agg_type"],
+      "properties": {
+        "agg_type": {
+          "title": "Type of aggegration",
+          "description": "Type of aggegation operation to apply.",
+          "enum": ["join_new", "join_existing", "union"],
+          "type": "string"
+        },
+        "attribute_name": {
+          "title": "Name of attribute",
+          "description": "Name of attribute across which to aggregate.",
+          "type": "string"
+        },
+        "options": {
+          "title": "Options",
+          "description": "Optional aggegration settings that are passed as keywords arguments to xarray.concat or xarray.merge. For `join_existing`, must contain something like {'dim': 'time'}.",
+          "type": "object"
         }
       }
     }
