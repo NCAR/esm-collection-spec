@@ -33,5 +33,5 @@ jobs:
             cd collection-spec/examples
             esmcol-validator sample-glade-cmip6-netcdf-collection.json
             esmcol-validator sample-pangeo-cmip6-collection.json
-            cd ..
+            cd ../..
             remark -f -u validate-links .
