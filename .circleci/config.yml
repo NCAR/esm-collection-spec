@@ -8,6 +8,7 @@ workflows:
 
 jobs:
   "python-3.7":
+    working_directory: ~/esm-collection-spec
     docker:
       - image: circleci/python:3.7
 
@@ -15,22 +16,22 @@ jobs:
       # Get our data and merge with upstream
       - checkout
 
-      - run: # install dev dependencies
-          name: Install Dev Dependencies
-          command: pip install pytest codecov pytest-cov --user
       - run:
-          name: Install Package
-          command: pip install -e . --user
-      - run:
-          name: Running Tests
-          command: pytest --junitxml=test-reports/junit.xml --cov=./ --verbose
-      - run:
-          name: Code Coverage
+          name: Install Link Validators
           command: |
-            echo "[Upload coverage]"
-            codecov
-      - store_test_results:
-          path: test-reports
+            sudo apt-get install curl software-properties-common
+            curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            sudo npm install -g remark-cli remark-validate-links
 
-      - store_artifacts:
-          path: test-reports
+      - run:
+          name: Install Validator
+          command: python -m pip install git+https://github.com/NCAR/esmcol-validator.git
+      - run:
+          name: Validate
+          command: |
+            cd collection-spec/examples
+            esmcol-validator sample-glade-cmip6-netcdf-collection.json
+            esmcol-validator sample-pangeo-cmip6-collection.json
+            cd ..
+            remark -f -u validate-links .
