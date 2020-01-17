@@ -29,10 +29,41 @@
     {
       "column_name": "grid_label",
       "vocabulary": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_grid_label.json"
+    },
+    {
+      "column_name": "time_range",
+      "vocabulary": ""
     }
   ],
   "assets": {
     "column_name": "path",
     "format": "netcdf"
+  },
+  "aggregation_control": {
+    "variable_column_name": "variable_id",
+    "groupby_attrs": [
+      "activity_id",
+      "institution_id",
+      "source_id",
+      "experiment_id",
+      "table_id",
+      "grid_label"
+    ],
+    "aggregations": [
+      {
+        "agg_type": "join_new",
+        "attribute_name": "member_id",
+        "options": { "coords": "minimal", "compat": "override" }
+      },
+      {
+        "agg_type": "join_existing",
+        "attribute_name": "time_range",
+        "options": { "dim": "time" }
+      },
+      {
+        "agg_type": "union",
+        "attribute_name": "variable_id"
+      }
+    ]
   }
 }
