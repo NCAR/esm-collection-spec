@@ -5,6 +5,9 @@
     - [Attribute Object](#attribute-object)
     - [Assets Object](#assets-object)
     - [Aggregation Control Object](#aggregation-control-object)
+  - [Python Validator](#python-validator)
+    - [Installation](#installation)
+    - [Usage](#usage)
 
 This document explains the structure and content of an ESM Collection.
 A collection provides metadata about the catalog, telling us what we expect to find inside and how to open it.
@@ -53,3 +56,63 @@ An aggregation control object describes how to support aggregation of multiple a
 | agg_type       | string | **REQUIRED** Type of aggregation operation to apply. Valid values include: `join_new`, `join_existing`, `union`                                                                                                                                                                                                                                                                                 |
 | attribute_name | string | Name of attribute (column) across which to aggregate.                                                                                                                                                                                                                                                                                                                                           |
 | options        | object | Optional aggregration settings that are passed as keywords arguments to [`xarray.concat()`](https://xarray.pydata.org/en/stable/generated/xarray.concat.html) or [`xarray.merge()`](https://xarray.pydata.org/en/stable/generated/xarray.merge.html#xarray.merge). For `join_existing`, it must contain the name of the existing dimension to use (for e.g.: something like `{'dim': 'time'}`). |
+
+## Python Validator
+
+### Installation
+
+The [Python validator for the esm-collection-spec](https://github.com/NCAR/esmcol-validator) validator can be installed in any of the following ways:
+
+Using Pip via PyPI:
+
+```bash
+python -m pip install esmcol-validator
+```
+
+Using Conda:
+
+```bash
+conda install -c conda-forge esmcol-validator
+```
+
+Or from the source repository:
+
+```bash
+python -m pip install git+https://github.com/NCAR/esmcol-validator.git
+```
+
+### Usage
+
+```bash
+$ esmcol-validator --help
+Usage: esmcol-validator [OPTIONS] ESMCOL_FILE
+
+  A utility that allows users to validate esm-collection json files against
+  the esm-collection-spec.
+
+Options:
+  --esmcol-spec-dirs TEXT
+  --version TEXT           [default: master]
+  --verbose                [default: False]
+  --timer                  [default: False]
+  --log-level TEXT         [default: CRITICAL]
+  --help                   Show this message and exit.
+```
+
+Example:
+
+```bash
+$ esmcol-validator sample-pangeo-cmip6-collection.json
+{'collections': {'valid': 1, 'invalid': 0}, 'catalog_files': {'valid': 1, 'invalid': 0}, 'unknown': 0}
+{
+    "collections": {
+        "valid": 1,
+        "invalid": 0
+    },
+    "catalog_files": {
+        "valid": 1,
+        "invalid": 0
+    },
+    "unknown": 0
+}
+```
