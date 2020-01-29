@@ -61,7 +61,7 @@ An aggregation control object describes how to support aggregation of multiple a
 
 ### Installation
 
-The [Python validator for the esm-collection-spec](https://github.com/NCAR/esmcol-validator) validator can be installed in any of the following ways:
+The [Python validator for the esm-collection-spec](https://github.com/NCAR/esmcol-validator) can be installed in any of the following ways:
 
 Using Pip via PyPI:
 
