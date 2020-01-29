@@ -119,7 +119,7 @@
         }
       }
     },
-    "aggregation_control": {
+    "aggregation": {
       "type": "object",
       "required": ["agg_type"],
       "properties": {
