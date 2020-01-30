@@ -1,6 +1,9 @@
 # ESM Collection Specification
 
 - [ESM Collection Specification](#esm-collection-specification)
+  - [Collection Specification](#collection-specification)
+  - [Catalog](#catalog)
+  - [Assets (Data Files)](#assets-data-files)
   - [Catalog fields](#catalog-fields)
     - [Attribute Object](#attribute-object)
     - [Assets Object](#assets-object)
@@ -12,6 +15,53 @@
 This document explains the structure and content of an ESM Collection.
 A collection provides metadata about the catalog, telling us what we expect to find inside and how to open it.
 The collection is described is a single json file, inspired by the STAC spec.
+
+The ESM Catalog specification consists of three parts:
+
+### Collection Specification
+
+The _collection_ specification provides metadata about the catalog, telling us what we expect to find inside and how to open it.
+The descriptor is a single json file, inspired by the STAC spec.
+
+```json
+{
+  "esmcat_version": "0.1.0",
+  "id": "sample",
+  "description": "This is a very basic sample ESM collection.",
+  "catalog_file": "sample_catalog.csv",
+  "attributes": [
+    {
+      "column_name": "activity_id",
+      "vocabulary": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_activity_id.json"
+    },
+    {
+      "column_name": "source_id",
+      "vocabulary": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_source_id.json"
+    }
+  ],
+  "assets": {
+    "column_name": "path",
+    "format": "zarr"
+  }
+}
+```
+
+### Catalog
+
+The collection points to a single catalog.
+A catalog is a CSV file.
+The meaning of the columns in the csv file is defined by the parent collection.
+
+```csv
+activity_id,source_id,path
+CMIP,ACCESS-CM2,gs://pangeo-data/store1.zarr
+CMIP,GISS-E2-1-G,gs://pangeo-data/store1.zarr
+```
+
+### Assets (Data Files)
+
+The data assets can be either netCDF or Zarr.
+They should be either URIs or full filesystem paths.
 
 ## Catalog fields
 
