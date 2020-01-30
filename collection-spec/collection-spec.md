@@ -1,9 +1,10 @@
 # ESM Collection Specification
 
 - [ESM Collection Specification](#esm-collection-specification)
-  - [Collection Specification](#collection-specification)
-  - [Catalog](#catalog)
-  - [Assets (Data Files)](#assets-data-files)
+  - [Overview](#overview)
+    - [Collection Specification](#collection-specification)
+    - [Catalog](#catalog)
+    - [Assets (Data Files)](#assets-data-files)
   - [Catalog fields](#catalog-fields)
     - [Attribute Object](#attribute-object)
     - [Assets Object](#assets-object)
@@ -12,16 +13,18 @@
     - [Installation](#installation)
     - [Usage](#usage)
 
+## Overview
+
 This document explains the structure and content of an ESM Collection.
 A collection provides metadata about the catalog, telling us what we expect to find inside and how to open it.
 The collection is described is a single json file, inspired by the STAC spec.
 
-The ESM Catalog specification consists of three parts:
+The ESM Collection specification consists of three parts:
 
 ### Collection Specification
 
 The _collection_ specification provides metadata about the catalog, telling us what we expect to find inside and how to open it.
-The descriptor is a single json file, inspired by the STAC spec.
+The descriptor is a single json file, inspired by the [STAC spec](https://github.com/radiantearth/stac-spec).
 
 ```json
 {
@@ -61,7 +64,7 @@ CMIP,GISS-E2-1-G,gs://pangeo-data/store1.zarr
 ### Assets (Data Files)
 
 The data assets can be either netCDF or Zarr.
-They should be either URIs or full filesystem paths.
+They should be either [URIs](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) or full filesystem paths.
 
 ## Catalog fields
 
