@@ -5,6 +5,7 @@
 - [ESM Catalog Specification](#esm-catalog-specification)
   - [Background and Related Projects](#background-and-related-projects)
   - [The Specification](#the-specification)
+  - [Intake driver: intake-esm](#intake-driver-intake-esm)
 
 The Earth System Model Catalog specification describes a way of cataloging large datasets with a homogeneous metadata structure, such as those produced by the Coupled Model Intercomparison Project of the World Climate Research Programme.
 It was designed within the Pangeo project, growing out of various ad-hoc attempts at building catalogs of convenience for CMIP6 and related dataset in the months before the [2019 CMIP6 Hackathon](https://cmip6hack.github.io).
@@ -53,3 +54,10 @@ The decision to make a new spec was ultimately driven by the timeline of the CMI
 ## The Specification
 
 **[collection-spec/](collection-spec/)** directory contains the esm collection core specification plus examples and information about the validation schema and validation tool.
+
+## Intake driver: intake-esm
+
+[Intake-esm](https://github.com/NCAR/intake-esm) is a data cataloging utility built on top of [intake](https://github.com/intake/intake), [pandas](https://pandas.pydata.org/), and [xarray](https://xarray.pydata.org/en/stable/). Intake-esm provides functionality for:
+
+- Parsing an ESM (Earth System Model) Collection/catalog and
+- Loading assets (netCDF files and/or Zarr stores) into xarray datasets.
