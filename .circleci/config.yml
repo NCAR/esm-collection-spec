@@ -30,8 +30,8 @@ jobs:
       - run:
           name: Validate
           command: |
+            remark -f -u validate-links .
             cd collection-spec/examples
             esmcol-validator sample-glade-cmip6-netcdf-collection.json
             esmcol-validator sample-pangeo-cmip6-collection.json
-            cd ../..
-            remark -f -u validate-links .
+            esmcol-validator --esmcol-spec-dirs ../json-schema simple-collection-with-catalog-dict.json

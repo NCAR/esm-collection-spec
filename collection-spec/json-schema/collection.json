@@ -3,23 +3,10 @@
   "$id": "collection.json#",
   "title": "ESM Collection Specification",
   "description": "This object represents Collections in a Earth System Model Catalog.",
-  "allOf": [
-    {
-      "$ref": "#/definitions/collection"
-    }
-  ],
   "definitions": {
     "collection": {
       "title": "Collection",
       "type": "object",
-      "required": [
-        "esmcat_version",
-        "id",
-        "description",
-        "catalog_file",
-        "attributes",
-        "assets"
-      ],
       "properties": {
         "esmcat_version": {
           "title": "ESM Catalog version",
@@ -42,6 +29,12 @@
           "title": "Catalog File",
           "type": "string"
         },
+
+        "catalog_dict": {
+          "title": "An array of dictionaries that represents the data that would otherwise be in the csv.",
+          "type": "array"
+        },
+
         "attributes": {
           "title": "Attributes",
           "description": "Asset attributes",
@@ -84,7 +77,7 @@
             },
             "groupby_attrs": {
               "title": "Group by attributes",
-              "description": "Column names (attributes) that define datasets that can be aggegrated.",
+              "description": "Column names (attributes) that define data sets that can be aggegrated.",
               "type": "array"
             },
             "aggregations": {
@@ -97,7 +90,18 @@
             }
           }
         }
-      }
+      },
+      "required": [
+        "esmcat_version",
+        "id",
+        "description",
+        "attributes",
+        "assets"
+      ],
+      "oneOf": [
+        { "required": ["catalog_file"] },
+        { "required": ["catalog_dict"] }
+      ]
     },
     "attribute": {
       "type": "object",
@@ -120,8 +124,8 @@
       "required": ["agg_type"],
       "properties": {
         "agg_type": {
-          "title": "Type of aggegration",
-          "description": "Type of aggegation operation to apply.",
+          "title": "Type of aggregration",
+          "description": "Type of aggregation operation to apply.",
           "enum": ["join_new", "join_existing", "union"],
           "type": "string"
         },
@@ -132,10 +136,16 @@
         },
         "options": {
           "title": "Options",
-          "description": "Optional aggegration settings that are passed as keywords arguments to xarray.concat or xarray.merge. For `join_existing`, must contain something like {'dim': 'time'}.",
+          "description": "Optional aggregration settings that are passed as keywords arguments to xarray.concat or xarray.merge. For `join_existing`, must contain something like {'dim': 'time'}.",
           "type": "object"
         }
       }
     }
-  }
+  },
+
+  "allOf": [
+    {
+      "$ref": "#/definitions/collection"
+    }
+  ]
 }
