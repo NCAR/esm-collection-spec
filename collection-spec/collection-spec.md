@@ -9,6 +9,8 @@
     - [Attribute Object](#attribute-object)
     - [Assets Object](#assets-object)
     - [Aggregation Control Object](#aggregation-control-object)
+    - [Aggregation Object](#aggregation-object)
+  - [Examples](#examples)
   - [Python Validator](#python-validator)
     - [Installation](#installation)
     - [Usage](#usage)
@@ -77,7 +79,7 @@ They should be either [URIs](https://en.wikipedia.org/wiki/Uniform_Resource_Iden
 | catalog_file        | string                                                    | **REQUIRED.** Path to a the CSV file with the catalog contents.                                                                                                           |
 | catalog_dict        | array                                                     | If specified, it is mutually exclusive with `catalog_file`. An array of dictionaries that represents the data that would otherwise be in the csv.                         |
 | attributes          | [[Attribute Object](#attribute-object)]                   | **REQUIRED.** A list of attribute columns in the data set.                                                                                                                |
-| assets              | [Assets Object](#assets-object)                           | **REQUIRED**. Description of how the assets (data files) are referenced in the CSV catalog file.                                                                          |
+| assets              | [Assets Object](#assets-object)                           | **REQUIRED.** Description of how the assets (data files) are referenced in the CSV catalog file.                                                                          |
 | aggregation_control | [Aggregation Control Object](#aggregation-control-object) | **OPTIONAL.** Description of how to support aggregation of multiple assets into a single xarray data set.                                                                 |
 
 ### Attribute Object
@@ -102,13 +104,29 @@ An assets object describes the columns in the CSV file relevant for opening the 
 
 ### Aggregation Control Object
 
-An aggregation control object describes how to support aggregation of multiple assets into a single xarray data set.
+An aggregation control object defines neccessary information to use when aggregating multiple assets into a single xarray data set.
 
-| Element        | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                     |
-| -------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| agg_type       | string | **REQUIRED** Type of aggregation operation to apply. Valid values include: `join_new`, `join_existing`, `union`                                                                                                                                                                                                                                                                                 |
-| attribute_name | string | Name of attribute (column) across which to aggregate.                                                                                                                                                                                                                                                                                                                                           |
-| options        | object | Optional aggregration settings that are passed as keywords arguments to [`xarray.concat()`](https://xarray.pydata.org/en/stable/generated/xarray.concat.html) or [`xarray.merge()`](https://xarray.pydata.org/en/stable/generated/xarray.merge.html#xarray.merge). For `join_existing`, it must contain the name of the existing dimension to use (for e.g.: something like `{'dim': 'time'}`). |
+| Element              | Type                                        | Description                                                                             |
+| -------------------- | ------------------------------------------- | --------------------------------------------------------------------------------------- |
+| variable_column_name | string                                      | **REQUIRED.** Name of the attribute column in csv file that contains the variable name. |
+| groupby_attrs        | array                                       | Column names (attributes) that define data sets that can be aggegrated.                 |
+| aggregations         | [[Aggregation Object](#aggregation-object)] | **OPTIONAL.** List of aggregations to apply to query results                            |
+
+### Aggregation Object
+
+An aggregation object describes types of operations done during the aggregation of multiple assets into a single xarray data set.
+
+| Element        | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                          |
+| -------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type           | string | **REQUIRED.** Type of aggregation operation to apply. Valid values include: `join_new`, `join_existing`, `union`                                                                                                                                                                                                                                                                                     |
+| attribute_name | string | Name of attribute (column) across which to aggregate.                                                                                                                                                                                                                                                                                                                                                |
+| options        | object | **OPTIONAL.** Aggregration settings that are passed as keywords arguments to [`xarray.concat()`](https://xarray.pydata.org/en/stable/generated/xarray.concat.html) or [`xarray.merge()`](https://xarray.pydata.org/en/stable/generated/xarray.merge.html#xarray.merge). For `join_existing`, it must contain the name of the existing dimension to use (for e.g.: something like `{'dim': 'time'}`). |
+
+## Examples
+
+- **[examples/](examples/)** directory contains examples of esm collections.
+
+- **[intake-esm-datastore](https://github.com/NCAR/intake-esm-datastore/tree/master/catalogs)** repository contains another set of real world esm collections.
 
 ## Python Validator
 
