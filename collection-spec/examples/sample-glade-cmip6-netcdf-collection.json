@@ -51,17 +51,17 @@
     ],
     "aggregations": [
       {
-        "agg_type": "join_new",
+        "type": "join_new",
         "attribute_name": "member_id",
         "options": { "coords": "minimal", "compat": "override" }
       },
       {
-        "agg_type": "join_existing",
+        "type": "join_existing",
         "attribute_name": "time_range",
         "options": { "dim": "time" }
       },
       {
-        "agg_type": "union",
+        "type": "union",
         "attribute_name": "variable_id"
       }
     ]

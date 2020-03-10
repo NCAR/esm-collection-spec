@@ -121,9 +121,9 @@
     },
     "aggregation": {
       "type": "object",
-      "required": ["agg_type"],
+      "required": ["type"],
       "properties": {
-        "agg_type": {
+        "type": {
           "title": "Type of aggregration",
           "description": "Type of aggregation operation to apply.",
           "enum": ["join_new", "join_existing", "union"],
