@@ -1,5 +1,4 @@
 [![CircleCI](https://img.shields.io/circleci/project/github/NCAR/esm-collection-spec/master.svg?style=for-the-badge&logo=circleci)](https://circleci.com/gh/NCAR/esm-collection-spec)
-
 [![Zenodo](https://img.shields.io/badge/DOI-10.5281%20%2F%20zenodo.3703320-blue.svg?style=for-the-badge)](https://doi.org/10.5281/zenodo.3703320)
 
 # ESM Catalog Specification
