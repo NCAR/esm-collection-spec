@@ -72,95 +72,94 @@
       "source_id": "GFDL-CM2.6",
       "experiment_id": "control",
       "variable_id": "ocean",
-      "zstore": "gs://cmip6/GFDL_CM2_6/control/ocean"
+      "href": "gs://cmip6/GFDL_CM2_6/control/ocean"
     },
     "1": {
       "institution_id": "NOAA-GFDL",
       "source_id": "GFDL-CM2.6",
       "experiment_id": "control",
       "variable_id": "ocean_3d",
-      "zstore": "gs://cmip6/GFDL_CM2_6/control/ocean_3d"
+      "href": "gs://cmip6/GFDL_CM2_6/control/ocean_3d"
     },
     "2": {
       "institution_id": "NOAA-GFDL",
       "source_id": "GFDL-CM2.6",
       "experiment_id": "control",
       "variable_id": "ocean_boundary",
-      "zstore": "gs://cmip6/GFDL_CM2_6/control/ocean_boundary"
+      "href": "gs://cmip6/GFDL_CM2_6/control/ocean_boundary"
     },
     "3": {
       "institution_id": "NOAA-GFDL",
       "source_id": "GFDL-CM2.6",
       "experiment_id": "control",
       "variable_id": "ocean_budgets",
-      "zstore": "gs://cmip6/GFDL_CM2_6/control/ocean_budgets"
+      "href": "gs://cmip6/GFDL_CM2_6/control/ocean_budgets"
     },
     "4": {
       "institution_id": "NOAA-GFDL",
       "source_id": "GFDL-CM2.6",
       "experiment_id": "control",
       "variable_id": "ocean_transport",
-      "zstore": "gs://cmip6/GFDL_CM2_6/control/ocean_transport"
+      "href": "gs://cmip6/GFDL_CM2_6/control/ocean_transport"
     },
     "5": {
       "institution_id": "NOAA-GFDL",
       "source_id": "GFDL-CM2.6",
       "experiment_id": "control",
       "variable_id": "surface",
-      "zstore": "gs://cmip6/GFDL_CM2_6/control/surface"
+      "href": "gs://cmip6/GFDL_CM2_6/control/surface"
     },
     "6": {
       "institution_id": "NOAA-GFDL",
       "source_id": "GFDL-CM2.6",
       "experiment_id": "one_percent",
       "variable_id": "ocean",
-      "zstore": "gs://cmip6/GFDL_CM2_6/one_percent/ocean"
+      "href": "gs://cmip6/GFDL_CM2_6/one_percent/ocean"
     },
     "7": {
       "institution_id": "NOAA-GFDL",
       "source_id": "GFDL-CM2.6",
       "experiment_id": "one_percent",
       "variable_id": "ocean_3d",
-      "zstore": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_3d"
+      "href": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_3d"
     },
     "8": {
       "institution_id": "NOAA-GFDL",
       "source_id": "GFDL-CM2.6",
       "experiment_id": "one_percent",
       "variable_id": "ocean_boundary",
-      "zstore": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_boundary"
+      "href": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_boundary"
     },
     "9": {
       "institution_id": "NOAA-GFDL",
       "source_id": "GFDL-CM2.6",
       "experiment_id": "one_percent",
       "variable_id": "ocean_budgets",
-      "zstore": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_budgets"
+      "href": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_budgets"
     },
     "10": {
       "institution_id": "NOAA-GFDL",
       "source_id": "GFDL-CM2.6",
       "experiment_id": "one_percent",
       "variable_id": "ocean_transport",
-      "zstore": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_transport"
+      "href": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_transport"
     },
     "11": {
       "institution_id": "NOAA-GFDL",
       "source_id": "GFDL-CM2.6",
       "experiment_id": "one_percent",
       "variable_id": "surface",
-      "zstore": "gs://cmip6/GFDL_CM2_6/one_percent/surface"
+      "href": "gs://cmip6/GFDL_CM2_6/one_percent/surface"
     },
     "12": {
       "institution_id": "NOAA-GFDL",
       "source_id": "GFDL-CM2.6",
       "experiment_id": "grid",
       "variable_id": "grid",
-      "zstore": "gs://cmip6/GFDL_CM2_6/grid"
+      "href": "gs://cmip6/GFDL_CM2_6/grid"
     }
   },
   "esm:attributes": ["institution_id", "source_id", "experiment_id", "variable_id"],
-  "esm:data_column_name": "zstore",
   "esm:aggregation_control": {
     "variable_column_name": "variable_id",
     "groupby_attrs": [
