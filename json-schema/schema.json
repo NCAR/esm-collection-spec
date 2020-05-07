@@ -5,13 +5,13 @@
   "description": "This object represents Collections in a Earth System Model Catalog.",
   "allOf": [
     {
-      "$ref": "https://raw.githubusercontent.com/radiantearth/stac-spec/v0.9.0/collection-spec/json-schema/collection.json"
+      "$ref": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.0.0-beta.1/collection-spec/json-schema/collection.json"
     },
     {
-      "$ref": "https://raw.githubusercontent.com/radiantearth/stac-spec/v0.9.0/extensions/collection-assets/json-schema/schema.json"
+      "$ref": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.0.0-beta.1/extensions/collection-assets/json-schema/schema.json"
     },
     {
-	    "$ref": "#/definitions/esm"
+      "$ref": "#/definitions/esm"
     }
   ],
   "definitions": {
@@ -27,18 +27,29 @@
             "type": "object",
             "oneOf": [
               {
-                "not": {
-                  "required": [
-                    "roles"
-                  ],
-                  "roles": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "enum": ["esm-catalog", "esm-vocabulary", "esm-data"]
+                "allOf": [
+                  {
+                    "$ref": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.0.0-beta.1/item-spec/json-schema/item.json#/definitions/asset"
+                  },
+                  {
+                    "not": {
+                      "required": [
+                        "roles"
+                      ],
+                      "roles": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "esm-catalog",
+                            "esm-vocabulary",
+                            "esm-data"
+                          ]
+                        }
+                      }
                     }
                   }
-                }
+                ]
               },
               {
                 "required": [
