@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "schema.json#",
+  "title": "ESM Extension Specification",
+  "description": "This object represents Collections in a Earth System Model Catalog.",
+  "allOf": [
+    {
+      "$ref": "https://raw.githubusercontent.com/radiantearth/stac-spec/v0.9.0/collection-spec/json-schema/collection.json"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/radiantearth/stac-spec/v0.9.0/extensions/collection-assets/json-schema/schema.json"
+    },
+    {
+	    "$ref": "#/definitions/esm"
+    }
+  ],
+  "definitions": {
+    "esm": {
+      "type": "object",
+      "required": [
+        "esm:attributes"
+      ],
+      "properties": {
+        "assets": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "oneOf": [
+              {
+                "not": {
+                  "required": [
+                    "roles"
+                  ],
+                  "roles": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": ["esm-catalog", "esm-vocabulary", "esm-data"]
+                    }
+                  }
+                }
+              },
+              {
+                "required": [
+                  "type",
+                  "roles",
+                  "esm:data_field",
+                  "esm:format"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "text/csv"
+                  },
+                  "roles": {
+                    "type": "array",
+                    "maxItems": 1,
+                    "items": {
+                      "type": "string",
+                      "const": "esm-catalog"
+                    }
+                  },
+                  "esm:data_field": {
+                    "title": "Column Name",
+                    "description": "The name of the column containing the path to the asset.",
+                    "type": "string"
+                  },
+                  "esm:format": {
+                    "title": "Format",
+                    "description": "File format of the assets.",
+                    "type": "string"
+                  },
+                  "esm:format_field": {
+                    "title": "Format Column Name",
+                    "description": "The column name which contains the data format.",
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "required": [
+                  "roles",
+                  "esm:attribute_field"
+                ],
+                "properties": {
+                  "roles": {
+                    "type": "array",
+                    "maxItems": 1,
+                    "items": {
+                      "type": "string",
+                      "const": "esm-vocabulary"
+                    }
+                  },
+                  "esm:attribute_field": {
+                    "title": "Column Name",
+                    "description": "The name of the column containing the path to the asset.",
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "required": [
+                  "roles"
+                ],
+                "properties": {
+                  "roles": {
+                    "type": "array",
+                    "maxItems": 1,
+                    "items": {
+                      "type": "string",
+                      "const": "esm-data"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "esm:attributes": {
+          "title": "Attributes",
+          "description": "Asset attributes",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "description": "The name of the attribute column. Must be in the header of the CSV file."
+          }
+        },
+        "esm:aggregation_control": {
+          "type": "object",
+          "required": [
+            "variable_field"
+          ],
+          "properties": {
+            "variable_field": {
+              "title": "Variable Column Name",
+              "description": "Name of the attribute column in csv file that contains the variable name.",
+              "type": "string"
+            },
+            "groupby_attrs": {
+              "title": "Group by attributes",
+              "description": "Column names (attributes) that define data sets that can be aggegrated.",
+              "type": "array"
+            },
+            "aggregations": {
+              "title": "Aggregation operations",
+              "description": "List of aggregations to apply to query results",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "type"
+                ],
+                "properties": {
+                  "type": {
+                    "title": "Type of aggregration",
+                    "description": "Type of aggregation operation to apply.",
+                    "enum": [
+                      "join_new",
+                      "join_existing",
+                      "union"
+                    ],
+                    "type": "string"
+                  },
+                  "attribute_name": {
+                    "title": "Name of attribute",
+                    "description": "Name of attribute across which to aggregate.",
+                    "type": "string"
+                  },
+                  "options": {
+                    "title": "Options",
+                    "description": "Optional aggregration settings that are passed as keywords arguments to xarray.concat or xarray.merge. For `join_existing`, must contain something like {'dim': 'time'}.",
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
