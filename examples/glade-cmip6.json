@@ -1,0 +1,136 @@
+{
+  "stac_version": "0.9.0",
+  "stac_extensions": [
+    "collection-assets",
+    "https://github.com/NCAR/esm-collection-spec/tree/master/schema.json"
+  ],
+  "id": "glade-cmip6",
+  "title": "CMIP6 Archive on NCAR's GLADE",
+  "description": "This is an ESM collection for CMIP6 data accessible on the NCAR's GLADE filesystem",
+  "extent": {
+    "spatial": {
+      "bbox": [[-180, -90, 180, 90]]
+    },
+    "temporal": {
+      "interval": [[null, null]]
+    }
+  },
+  "providers": [
+    {
+      "name": " World Climate Research Programme",
+      "roles": ["producer", "licensor"],
+      "url": "https://www.wcrp-climate.org/wgcm-cmip/wgcm-cmip6"
+    },
+    {
+      "name": "National Center for Atmospheric Research (NCAR)",
+      "roles": ["host"],
+      "url": "https://www2.cisl.ucar.edu/resources/cmip-analysis-platform"
+    }
+  ],
+  "license": "proprietary",
+  "links": [
+    {
+      "href": "https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html",
+      "type": "text/html",
+      "rel": "license",
+      "title": "CMIP6: Terms of Use"
+    }
+  ],
+  "assets": {
+    "thumbnail": {
+      "href": "cmip6-thumbnail.png",
+      "title": "A preview image for visualization.",
+      "type": "image/png",
+      "roles": ["thumbnail"]
+    },
+    "catalog": {
+      "href": "glade-cmip6.csv.gz",
+      "title": "Catalog",
+      "description": "Path to a CSV file with the catalog contents.",
+      "type": "text/csv",
+      "roles": ["esm-catalog"],
+      "esm:column_name": "path"
+    },
+    "activity_id": {
+      "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_activity_id.json",
+      "type": "application/json",
+      "roles": ["esm-vocabulary"],
+      "esm:column_name": "activity_id"
+    },
+    "source_id": {
+      "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_source_id.json",
+      "type": "application/json",
+      "roles": ["esm-vocabulary"],
+      "esm:column_name": "source_id"
+    },
+    "institution_id": {
+      "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_institution_id.json",
+      "type": "application/json",
+      "roles": ["esm-vocabulary"],
+      "esm:column_name": "institution_id"
+    },
+    "experiment_id": {
+      "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_experiment_id.json",
+      "type": "application/json",
+      "roles": ["esm-vocabulary"],
+      "esm:column_name": "experiment_id"
+    },
+    "table_id": {
+      "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_table_id.json",
+      "type": "application/json",
+      "roles": ["esm-vocabulary"],
+      "esm:column_name": "table_id"
+    },
+    "grid_label": {
+      "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_grid_label.json",
+      "type": "application/json",
+      "roles": ["esm-vocabulary"],
+      "esm:column_name": "grid_label"
+    }
+  },
+  "esm:catalog": {},
+  "esm:attributes": [
+    "activity_id",
+    "source_id",
+    "institution_id",
+    "experiment_id",
+    "member_id",
+    "table_id",
+    "variable_id",
+    "grid_label",
+    "version",
+    "dcpp_init_year"
+  ],
+  "esm:aggregation_control": {
+    "variable_column_name": "variable_id",
+    "groupby_attrs": [
+      "activity_id",
+      "institution_id",
+      "source_id",
+      "experiment_id",
+      "table_id",
+      "grid_label"
+    ],
+    "aggregations": [
+      {
+        "type": "join_new",
+        "attribute_name": "member_id",
+        "options": { "coords": "minimal", "compat": "override" }
+      },
+      {
+        "type": "join_new",
+        "attribute_name": "dcpp_init_year",
+        "options": { "coords": "minimal", "compat": "override" }
+      },
+      {
+        "type": "join_existing",
+        "attribute_name": "time_range",
+        "options": { "dim": "time" }
+      },
+      {
+        "type": "union",
+        "attribute_name": "variable_id"
+      }
+    ]
+  }
+}
