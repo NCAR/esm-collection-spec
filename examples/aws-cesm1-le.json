@@ -49,13 +49,14 @@
       "description": "Path to a the CSV file with the catalog contents.",
       "type": "text/csv",
       "roles": ["esm-catalog"],
-      "esm:data_column_name": "path"
+      "esm:data_field": "path",
+      "esm:format": "zarr"
     }
   },
   "esm:attributes": ["component", "frequency", "exeriment", "variable"],
   "esm:aggregation_control": {
-    "variable_column_name": "variable",
-    "groupby_attrs": [
+    "variable": "variable",
+    "groupby": [
       "component",
       "experiment",
       "frequency"
@@ -63,7 +64,7 @@
     "aggregations": [
       {
         "type": "union",
-        "attribute_name": "variable",
+        "attribute": "variable",
         "options": {"compat": "override"}
       }
     ]
