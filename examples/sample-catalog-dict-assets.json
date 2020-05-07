@@ -53,7 +53,7 @@
       "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_institution_id.json",
       "type": "application/json",
       "roles": ["esm-vocabulary"],
-      "esm:column_name": "activity_id"
+      "esm:column_name": "institution_id"
     },
     "source_id": {
       "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_source_id.json",
