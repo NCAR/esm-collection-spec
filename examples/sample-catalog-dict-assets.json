@@ -72,6 +72,7 @@
       "source_id": "GFDL-CM2.6",
       "experiment_id": "control",
       "variable_id": "ocean",
+      "roles": ["esm-data"],
       "href": "gs://cmip6/GFDL_CM2_6/control/ocean"
     },
     "1": {
@@ -79,6 +80,7 @@
       "source_id": "GFDL-CM2.6",
       "experiment_id": "control",
       "variable_id": "ocean_3d",
+      "roles": ["esm-data"],
       "href": "gs://cmip6/GFDL_CM2_6/control/ocean_3d"
     },
     "2": {
@@ -86,6 +88,7 @@
       "source_id": "GFDL-CM2.6",
       "experiment_id": "control",
       "variable_id": "ocean_boundary",
+      "roles": ["esm-data"],
       "href": "gs://cmip6/GFDL_CM2_6/control/ocean_boundary"
     },
     "3": {
@@ -93,6 +96,7 @@
       "source_id": "GFDL-CM2.6",
       "experiment_id": "control",
       "variable_id": "ocean_budgets",
+      "roles": ["esm-data"],
       "href": "gs://cmip6/GFDL_CM2_6/control/ocean_budgets"
     },
     "4": {
@@ -100,6 +104,7 @@
       "source_id": "GFDL-CM2.6",
       "experiment_id": "control",
       "variable_id": "ocean_transport",
+      "roles": ["esm-data"],
       "href": "gs://cmip6/GFDL_CM2_6/control/ocean_transport"
     },
     "5": {
@@ -107,6 +112,7 @@
       "source_id": "GFDL-CM2.6",
       "experiment_id": "control",
       "variable_id": "surface",
+      "roles": ["esm-data"],
       "href": "gs://cmip6/GFDL_CM2_6/control/surface"
     },
     "6": {
@@ -114,6 +120,7 @@
       "source_id": "GFDL-CM2.6",
       "experiment_id": "one_percent",
       "variable_id": "ocean",
+      "roles": ["esm-data"],
       "href": "gs://cmip6/GFDL_CM2_6/one_percent/ocean"
     },
     "7": {
@@ -121,6 +128,7 @@
       "source_id": "GFDL-CM2.6",
       "experiment_id": "one_percent",
       "variable_id": "ocean_3d",
+      "roles": ["esm-data"],
       "href": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_3d"
     },
     "8": {
@@ -128,6 +136,7 @@
       "source_id": "GFDL-CM2.6",
       "experiment_id": "one_percent",
       "variable_id": "ocean_boundary",
+      "roles": ["esm-data"],
       "href": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_boundary"
     },
     "9": {
@@ -135,6 +144,7 @@
       "source_id": "GFDL-CM2.6",
       "experiment_id": "one_percent",
       "variable_id": "ocean_budgets",
+      "roles": ["esm-data"],
       "href": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_budgets"
     },
     "10": {
@@ -142,6 +152,7 @@
       "source_id": "GFDL-CM2.6",
       "experiment_id": "one_percent",
       "variable_id": "ocean_transport",
+      "roles": ["esm-data"],
       "href": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_transport"
     },
     "11": {
@@ -149,6 +160,7 @@
       "source_id": "GFDL-CM2.6",
       "experiment_id": "one_percent",
       "variable_id": "surface",
+      "roles": ["esm-data"],
       "href": "gs://cmip6/GFDL_CM2_6/one_percent/surface"
     },
     "12": {
@@ -156,6 +168,7 @@
       "source_id": "GFDL-CM2.6",
       "experiment_id": "grid",
       "variable_id": "grid",
+      "roles": ["esm-data"],
       "href": "gs://cmip6/GFDL_CM2_6/grid"
     }
   },
