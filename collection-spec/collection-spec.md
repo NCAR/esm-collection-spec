@@ -20,9 +20,17 @@ This extension introduces a three new fields at the top level of the collection:
 | ---------- | ------------------------------------------ | ----------- |
 | esm:catalog | Map<string, [ESM Catalog Object](#esm-catalog-object)> | A dictionary of assets. Required if `assets.catalog` not defined. |
 | esm:attributes | [string] | **REQUIRED.** A list of attribute columns in the data set. |
-| esm:aggregation_control | [Aggregation Object](#aggregation-object) |  **OPTIONAL.** Description of how to support aggregation of multiple assets into a single xarray data set. |
+| esm:aggregation_control | [Aggregation Object](#esm-aggregation-object) |  **OPTIONAL.** Description of how to support aggregation of multiple assets into a single xarray data set. |
 
 ### ESM Catalog Object
+
+TODO. Pending spec.
+
+| Field Name | Type                                       | Description |
+| ---------- | ------------------------------------------ | ----------- |
+| | |
+
+### ESM Aggregation Object
 
 TODO. Pending spec.
 
@@ -39,9 +47,9 @@ ESM has multiple implementations. Some example collections:
 
 Additionally, [Intake-ESM](https://intake-esm.readthedocs.io/en/latest/) provides a Python toolkit for using ESM catalogs.
 
-## Python Validator
+### Python Validator
 
-### Installation
+#### Installation
 
 The [Python validator for the esm-collection-spec](https://github.com/NCAR/esmcol-validator) can be installed in any of the following ways:
 
@@ -63,7 +71,7 @@ Or from the source repository:
 python -m pip install git+https://github.com/NCAR/esmcol-validator.git
 ```
 
-### Usage
+#### Usage
 
 ```bash
 $ esmcol-validator --help
