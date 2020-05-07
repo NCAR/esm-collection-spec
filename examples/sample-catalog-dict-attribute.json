@@ -53,19 +53,19 @@
       "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_institution_id.json",
       "type": "application/json",
       "roles": ["esm-vocabulary"],
-      "esm:column_name": "activity_id"
+      "esm:attribute_field": "activity_id"
     },
     "source_id": {
       "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_source_id.json",
       "type": "application/json",
       "roles": ["esm-vocabulary"],
-      "esm:column_name": "source_id"
+      "esm:attribute_field": "source_id"
     },
     "experiment_id": {
       "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_experiment_id.json",
       "type": "application/json",
       "roles": ["esm-vocabulary"],
-      "esm:column_name": "experiment_id"
+      "esm:attribute_field": "experiment_id"
     }
   },
   "esm:catalog": [{
@@ -163,7 +163,7 @@
   "esm:attributes": ["institution_id", "source_id", "experiment_id", "variable_id"],
   "esm:data_column_name": "zstore",
   "esm:aggregation_control": {
-    "variable_column_name": "variable_id",
+    "variable": "variable_id",
     "groupby_attrs": [
       "institution_id",
       "source_id",
