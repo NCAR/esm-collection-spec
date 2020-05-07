@@ -36,10 +36,10 @@
   "license": "proprietary",
   "links": [
     {
-      "href": "https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html",
+      "href": "https://www.ucar.edu/terms-of-use/data",
       "type": "text/html",
       "rel": "license",
-      "title": "CMIP6: Terms of Use"
+      "title": "TERMS OF USE FOR UCAR DATA REPOSITORIES"
     }
   ],
   "assets": {
