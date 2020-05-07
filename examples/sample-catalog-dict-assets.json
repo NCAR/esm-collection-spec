@@ -53,19 +53,19 @@
       "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_institution_id.json",
       "type": "application/json",
       "roles": ["esm-vocabulary"],
-      "esm:column_name": "institution_id"
+      "esm:attribute_field": "institution_id"
     },
     "source_id": {
       "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_source_id.json",
       "type": "application/json",
       "roles": ["esm-vocabulary"],
-      "esm:column_name": "source_id"
+      "esm:attribute_field": "source_id"
     },
     "experiment_id": {
       "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_experiment_id.json",
       "type": "application/json",
       "roles": ["esm-vocabulary"],
-      "esm:column_name": "experiment_id"
+      "esm:attribute_field": "experiment_id"
     },
     "0": {
       "institution_id": "NOAA-GFDL",
