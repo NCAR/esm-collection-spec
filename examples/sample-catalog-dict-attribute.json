@@ -1,0 +1,177 @@
+{
+  "stac_version": "0.9.0",
+  "stac_extensions": [
+    "collection-assets",
+    "https://github.com/NCAR/esm-collection-spec/tree/master/schema.json"
+  ],
+  "id": "GFDL_CM2_6_GCP",
+  "title": "GFDL CM2.6 GCP",
+  "description": "GFDL CM2.6 zarr data residing in Google Storage.",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [-180, -90, 180, 90]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        ["1850-01-15T12:00:00Z", "2014-12-15T12:00:00Z"]
+      ]
+    }
+  },
+  "providers": [{
+      "name": "Geophysical Fluid Dynamics Laboratory",
+      "roles": ["producer", "licensor"],
+      "url": "https://www.gfdl.noaa.gov/"
+    },
+    {
+      "name": "Pangeo",
+      "roles": ["processor"],
+      "url": "https://console.cloud.google.com/pangeo.io"
+    },
+    {
+      "name": "Google",
+      "roles": ["host"],
+      "url": "https://console.cloud.google.com/marketplace/details/noaa-public/cmip6"
+    }
+  ],
+  "license": "proprietary",
+  "links": [{
+    "href": "https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-1.html",
+    "type": "text/html",
+    "rel": "license",
+    "title": "CMIP6: Terms of Use"
+  }],
+  "assets": {
+    "thumbnail": {
+      "href": "logo.png",
+      "title": "A preview image for visualization.",
+      "type": "image/png",
+      "roles": ["thumbnail"]
+    },
+    "institution_id": {
+      "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_institution_id.json",
+      "type": "application/json",
+      "roles": ["esm-vocabulary"],
+      "esm:column_name": "activity_id"
+    },
+    "source_id": {
+      "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_source_id.json",
+      "type": "application/json",
+      "roles": ["esm-vocabulary"],
+      "esm:column_name": "source_id"
+    },
+    "experiment_id": {
+      "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_experiment_id.json",
+      "type": "application/json",
+      "roles": ["esm-vocabulary"],
+      "esm:column_name": "experiment_id"
+    }
+  },
+  "esm:catalog": [{
+      "institution_id": "NOAA-GFDL",
+      "source_id": "GFDL-CM2.6",
+      "experiment_id": "control",
+      "variable_id": "ocean",
+      "zstore": "gs://cmip6/GFDL_CM2_6/control/ocean"
+    },
+    {
+      "institution_id": "NOAA-GFDL",
+      "source_id": "GFDL-CM2.6",
+      "experiment_id": "control",
+      "variable_id": "ocean_3d",
+      "zstore": "gs://cmip6/GFDL_CM2_6/control/ocean_3d"
+    },
+    {
+      "institution_id": "NOAA-GFDL",
+      "source_id": "GFDL-CM2.6",
+      "experiment_id": "control",
+      "variable_id": "ocean_boundary",
+      "zstore": "gs://cmip6/GFDL_CM2_6/control/ocean_boundary"
+    },
+    {
+      "institution_id": "NOAA-GFDL",
+      "source_id": "GFDL-CM2.6",
+      "experiment_id": "control",
+      "variable_id": "ocean_budgets",
+      "zstore": "gs://cmip6/GFDL_CM2_6/control/ocean_budgets"
+    },
+    {
+      "institution_id": "NOAA-GFDL",
+      "source_id": "GFDL-CM2.6",
+      "experiment_id": "control",
+      "variable_id": "ocean_transport",
+      "zstore": "gs://cmip6/GFDL_CM2_6/control/ocean_transport"
+    },
+    {
+      "institution_id": "NOAA-GFDL",
+      "source_id": "GFDL-CM2.6",
+      "experiment_id": "control",
+      "variable_id": "surface",
+      "zstore": "gs://cmip6/GFDL_CM2_6/control/surface"
+    },
+    {
+      "institution_id": "NOAA-GFDL",
+      "source_id": "GFDL-CM2.6",
+      "experiment_id": "one_percent",
+      "variable_id": "ocean",
+      "zstore": "gs://cmip6/GFDL_CM2_6/one_percent/ocean"
+    },
+    {
+      "institution_id": "NOAA-GFDL",
+      "source_id": "GFDL-CM2.6",
+      "experiment_id": "one_percent",
+      "variable_id": "ocean_3d",
+      "zstore": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_3d"
+    },
+    {
+      "institution_id": "NOAA-GFDL",
+      "source_id": "GFDL-CM2.6",
+      "experiment_id": "one_percent",
+      "variable_id": "ocean_boundary",
+      "zstore": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_boundary"
+    },
+    {
+      "institution_id": "NOAA-GFDL",
+      "source_id": "GFDL-CM2.6",
+      "experiment_id": "one_percent",
+      "variable_id": "ocean_budgets",
+      "zstore": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_budgets"
+    },
+    {
+      "institution_id": "NOAA-GFDL",
+      "source_id": "GFDL-CM2.6",
+      "experiment_id": "one_percent",
+      "variable_id": "ocean_transport",
+      "zstore": "gs://cmip6/GFDL_CM2_6/one_percent/ocean_transport"
+    },
+    {
+      "institution_id": "NOAA-GFDL",
+      "source_id": "GFDL-CM2.6",
+      "experiment_id": "one_percent",
+      "variable_id": "surface",
+      "zstore": "gs://cmip6/GFDL_CM2_6/one_percent/surface"
+    },
+    {
+      "institution_id": "NOAA-GFDL",
+      "source_id": "GFDL-CM2.6",
+      "experiment_id": "grid",
+      "variable_id": "grid",
+      "zstore": "gs://cmip6/GFDL_CM2_6/grid"
+    }
+  ],
+  "esm:attributes": ["institution_id", "source_id", "experiment_id", "variable_id"],
+  "esm:data_column_name": "zstore",
+  "esm:aggregation_control": {
+    "variable_column_name": "variable_id",
+    "groupby_attrs": [
+      "institution_id",
+      "source_id",
+      "experiment_id"
+    ],
+    "aggregations": [{
+      "type": "union",
+      "attribute_name": "variable_id"
+    }]
+  }
+}
