@@ -12,7 +12,7 @@
       "bbox": [[-180, -90, 180, 90]]
     },
     "temporal": {
-      "interval": [[null, null]]
+      "interval": [["0001-01-01T00:00:00Z", "7894-12-16T00:00:00Z"]]
     }
   },
   "providers": [
