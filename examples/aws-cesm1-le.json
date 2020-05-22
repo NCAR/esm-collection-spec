@@ -3,7 +3,7 @@
   "stac_version": "0.9.0",
   "stac_extensions": [
     "asset",
-    "esm"
+    "https://github.com/NCAR/esm-collection-spec/tree/master/schema.json"
   ],
   "id": "aws-cesm1-le",
   "title": "NCAR Large Ensemble on AWS",
