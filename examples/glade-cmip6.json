@@ -49,7 +49,8 @@
       "description": "Path to a CSV file with the catalog contents.",
       "type": "text/csv",
       "roles": ["esm-catalog"],
-      "esm:data_field": "path"
+      "esm:data_field": "path",
+      "esm:format": "zarr"
     },
     "activity_id": {
       "href": "https://raw.githubusercontent.com/WCRP-CMIP/CMIP6_CVs/master/CMIP6_activity_id.json",
