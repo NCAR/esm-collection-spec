@@ -17,9 +17,10 @@ jobs:
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '12'
-      - name: Install Link Validators
+      - name: Install Validators
         run: |
           npm install -g remark-cli remark-validate-links
+          python -m pip install esmcol-validator
       - name: Validate links
         run: |
           remark -f -u validate-links .
