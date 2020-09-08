@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: '*'
+  pull_request:
+    branches: '*'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
+      - name: Install Validators
+        run: |
+          npm install -g remark-cli remark-validate-links
+          python -m pip install esmcol-validator
+      - name: Validate links
+        run: |
+          remark -f -u validate-links .
+
+      - name: Validate sample collections
+        run: |
+          cd collection-spec/examples
+          esmcol-validator sample-glade-cmip6-netcdf-collection.json
+          esmcol-validator sample-pangeo-cmip6-collection.json
+          esmcol-validator --esmcol-spec-dirs ../json-schema simple-collection-with-catalog-dict.json
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: pre-commit/action@v2.0.0

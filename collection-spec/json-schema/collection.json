@@ -1,0 +1,151 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "collection.json#",
+  "title": "ESM Collection Specification",
+  "description": "This object represents Collections in a Earth System Model Catalog.",
+  "definitions": {
+    "collection": {
+      "title": "Collection",
+      "type": "object",
+      "properties": {
+        "esmcat_version": {
+          "title": "ESM Catalog version",
+          "type": "string",
+          "const": "0.1.0"
+        },
+        "id": {
+          "title": "Identifier",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "catalog_file": {
+          "title": "Catalog File",
+          "type": "string"
+        },
+
+        "catalog_dict": {
+          "title": "An array of dictionaries that represents the data that would otherwise be in the csv.",
+          "type": "array"
+        },
+
+        "attributes": {
+          "title": "Attributes",
+          "description": "Asset attributes",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/attribute"
+          }
+        },
+        "assets": {
+          "title": "Assets",
+          "description": "Assets file",
+          "type": "object",
+          "required": ["column_name"],
+          "properties": {
+            "column_name": {
+              "title": "Column Name",
+              "description": "The name of the column containing the path to the asset.",
+              "type": "string"
+            },
+            "format": {
+              "title": "Format",
+              "description": "File format of the assets.",
+              "type": "string"
+            },
+            "format_column_name": {
+              "title": "Format Column Name",
+              "description": "The column name which contains the data format.",
+              "type": "string"
+            }
+          }
+        },
+        "aggregation_control": {
+          "type": "object",
+          "required": ["variable_column_name"],
+          "properties": {
+            "variable_column_name": {
+              "title": "Variable Column Name",
+              "description": "Name of the attribute column in csv file that contains the variable name.",
+              "type": "string"
+            },
+            "groupby_attrs": {
+              "title": "Group by attributes",
+              "description": "Column names (attributes) that define data sets that can be aggegrated.",
+              "type": "array"
+            },
+            "aggregations": {
+              "title": "Aggregation operations",
+              "description": "List of aggregations to apply to query results",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/aggregation"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "esmcat_version",
+        "id",
+        "description",
+        "attributes",
+        "assets"
+      ],
+      "oneOf": [
+        { "required": ["catalog_file"] },
+        { "required": ["catalog_dict"] }
+      ]
+    },
+    "attribute": {
+      "type": "object",
+      "required": ["column_name"],
+      "properties": {
+        "column_name": {
+          "title": "Column Name",
+          "description": "Name of the attribute column in the assets csv file.",
+          "type": "string"
+        },
+        "vocabulary": {
+          "title": "Vocabulary",
+          "description": "Link to the controlled vocabulary for the attribute in the format of a URL.",
+          "type": "string"
+        }
+      }
+    },
+    "aggregation": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "title": "Type of aggregration",
+          "description": "Type of aggregation operation to apply.",
+          "enum": ["join_new", "join_existing", "union"],
+          "type": "string"
+        },
+        "attribute_name": {
+          "title": "Name of attribute",
+          "description": "Name of attribute across which to aggregate.",
+          "type": "string"
+        },
+        "options": {
+          "title": "Options",
+          "description": "Optional aggregration settings that are passed as keywords arguments to xarray.concat or xarray.merge. For `join_existing`, must contain something like {'dim': 'time'}.",
+          "type": "object"
+        }
+      }
+    }
+  },
+
+  "allOf": [
+    {
+      "$ref": "#/definitions/collection"
+    }
+  ]
+}
