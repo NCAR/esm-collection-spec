@@ -1,0 +1,72 @@
+
+{
+  "stac_version": "0.9.0",
+  "stac_extensions": [
+    "collection-assets",
+    "https://github.com/NCAR/esm-collection-spec/tree/master/schema.json"
+  ],
+  "id": "aws-cesm1-le",
+  "title": "NCAR Large Ensemble on AWS",
+  "description": "This is an ESM collection for CESM1 Large Ensemble Zarr dataset publicly available on Amazon S3 (us-west-2 region)",
+  "extent": {
+    "spatial": {
+      "bbox": [[-180, -90, 180, 90]]
+    },
+    "temporal": {
+      "interval": [["1850-01-01T00:00:00Z", "2100-01-01T00:00:00Z"]]
+    }
+  },
+  "providers": [
+    {
+    "name": "National Center for Atmospheric Research",
+    "roles": ["producer","licensor"],
+    "url": "https://ncar.ucar.edu/"
+    },
+    {
+    "name": "The Pangeo Project",
+    "roles": ["processor"],
+    "url": "http://pangeo.io/"
+    },
+    {
+    "name": "Amazon",
+    "roles": ["host"],
+    "url": "https://registry.opendata.aws/ncar-cesm-lens/"
+    }
+  ],
+  "license": "proprietary",
+  "links": [
+    {
+      "href": "https://www.ucar.edu/terms-of-use/data",
+      "type": "text/html",
+      "rel": "license",
+      "title": "TERMS OF USE FOR UCAR DATA REPOSITORIES"
+    }
+  ],
+  "assets": {
+    "catalog": {
+      "href": "https://github.com/NCAR/cesm-lens-aws/raw/master/intake-catalogs/aws-cesm1-le.csv",
+      "title": "Catalog",
+      "description": "Path to a the CSV file with the catalog contents.",
+      "type": "text/csv",
+      "roles": ["esm-catalog"],
+      "esm:data_field": "path",
+      "esm:format": "zarr"
+    }
+  },
+  "esm:attributes": ["component", "frequency", "exeriment", "variable"],
+  "esm:aggregation_control": {
+    "variable": "variable",
+    "groupby": [
+      "component",
+      "experiment",
+      "frequency"
+    ],
+    "aggregations": [
+      {
+        "type": "union",
+        "attribute": "variable",
+        "options": {"compat": "override"}
+      }
+    ]
+  }
+}
