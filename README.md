@@ -1,7 +1,7 @@
-[![CircleCI](https://img.shields.io/circleci/project/github/NCAR/esm-collection-spec/master.svg?style=for-the-badge&logo=circleci)](https://circleci.com/gh/NCAR/esm-collection-spec)
-[![Zenodo](https://img.shields.io/badge/DOI-10.5281%20%2F%20zenodo.3703320-blue.svg?style=for-the-badge)](https://doi.org/10.5281/zenodo.3703320)
-
 # ESM Catalog Specification
+
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/NCAR/esm-collection-spec/CI?label=CI&logo=github&style=for-the-badge)](https://github.com/NCAR/esm-collection-spec/actions?query=workflow%3ACI)
+[![Zenodo](https://img.shields.io/badge/DOI-10.5281%20%2F%20zenodo.3703320-blue.svg?style=for-the-badge)](https://doi.org/10.5281/zenodo.3703320)
 
 - [ESM Catalog Specification](#esm-catalog-specification)
   - [Background and Related Projects](#background-and-related-projects)
