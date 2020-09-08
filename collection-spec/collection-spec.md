@@ -9,8 +9,8 @@
 This document explains the fields of the STAC Earth System Model (ESM) Extension to a STAC Collection.
 ESM data is considered to be data produced by simulations models of the earth for a data specific model domain and temporal extent.
 
-- [Example](examples/sample-pangeo-cmip6-collection.json)
-- [JSON Schema](json-schema/schema.json)
+- [Example](./examples/sample-pangeo-cmip6-collection.json)
+- [JSON Schema](../json-schema/schema.json)
 
 ## Collection Fields
 
