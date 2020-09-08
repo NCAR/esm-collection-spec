@@ -25,12 +25,12 @@ jobs:
         run: |
           remark -f -u validate-links .
 
-      - name: Validate sample collections
-        run: |
-          cd collection-spec/examples
-          esmcol-validator sample-glade-cmip6-netcdf-collection.json
-          esmcol-validator sample-pangeo-cmip6-collection.json
-          esmcol-validator --esmcol-spec-dirs ../json-schema simple-collection-with-catalog-dict.json
+      # - name: Validate sample collections
+      #   run: |
+      #     cd collection-spec/examples
+      #     esmcol-validator sample-glade-cmip6-netcdf-collection.json
+      #     esmcol-validator sample-pangeo-cmip6-collection.json
+      #     esmcol-validator --esmcol-spec-dirs ../json-schema simple-collection-with-catalog-dict.json
   linting:
     runs-on: ubuntu-latest
     steps:
