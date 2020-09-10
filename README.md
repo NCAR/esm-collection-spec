@@ -54,7 +54,7 @@ The decision to make a new spec was ultimately driven by the timeline of the CMI
 
 ## The Specification
 
-**[collection-spec/](collection-spec/)** directory contains the esm collection core specification plus examples and information about the validation schema and validation tool.
+**[esm-collection/](esm-collection/)** directory contains the esm collection core specification plus examples and information about the validation schema and validation tool.
 
 ## Intake driver: intake-esm
 
