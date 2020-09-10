@@ -67,7 +67,7 @@
                   },
                   "esm:format": {
                     "title": "Format",
-                    "description": "File/data format of the assets.",
+                    "description": "The file/data format of the assets.",
                     "type": "string"
                   },
                   "esm:format_field": {

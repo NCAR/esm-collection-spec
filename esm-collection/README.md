@@ -16,11 +16,14 @@ ESM data is considered to be data produced by simulations models of the earth fo
 
 This extension introduces a three new fields at the top level of the collection: `esm:catalog`, `esm:attributes` and `esm:aggregation_control`.
 
-| Field Name              | Type                                                          | Description                                                                                               |
-| ----------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| esm:catalog             | Map<string, [ESM Catalog Object](#esm-catalog-object)>        | A dictionary of assets. Required if `assets.catalog` not defined.                                         |
-| esm:attributes          | [string]                                                      | **REQUIRED.** A list of attribute columns in the data set.                                                |
-| esm:aggregation_control | [Aggregation Control Object](#esm-aggregation-control-object) | **OPTIONAL.** Description of how to support aggregation of multiple assets into a single xarray data set. |
+| Field Name              | Type                                                          | Description                                                                                                                                   |
+| ----------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| esm:catalog             | Map<string, [ESM Catalog Object](#esm-catalog-object)>        | A dictionary of assets. Required if `assets.catalog` not defined.                                                                             |
+| esm:attributes          | [string]                                                      | **REQUIRED.** A list of attribute columns in the data set.                                                                                    |
+| esm:aggregation_control | [Aggregation Control Object](#esm-aggregation-control-object) | **OPTIONAL.** Description of how to support aggregation of multiple assets into a single xarray data set.                                     |
+| esm:data_field          | string                                                        | **REQUIRED**. The name of the column containing the path to the asset.                                                                        |
+| esm:format              | string                                                        | The file or data format of the assets. Valid are `netcdf` and `zarr`. If specified, it means that all data in the catalog are the same type.  |
+| esm:format_field        | string                                                        | The column name which contains the data format, allowing for heterogeneous data formats in one catalog. Mutually exclusive with `esm:format`. |
 
 ### ESM Catalog Object
 
