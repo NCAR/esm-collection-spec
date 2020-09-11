@@ -26,11 +26,7 @@
     },
     "esm": {
       "type": "object",
-      "required": [
-        "stac_extensions",
-        "assets",
-        "esm:attributes"
-      ],
+      "required": ["stac_extensions", "assets", "esm:attributes"],
       "properties": {
         "stac_extensions": {
           "type": "array",
@@ -44,9 +40,7 @@
         "assets": {
           "type": "object",
           "additionalProperties": {
-            "required": [
-              "href"
-            ],
+            "required": ["href"],
             "properties": {
               "href": {
                 "title": "Asset reference",
@@ -72,11 +66,7 @@
                     "type": "array",
                     "items": {
                       "not": {
-                        "enum": [
-                          "esm-catalog",
-                          "esm-vocabulary",
-                          "esm-asset"
-                        ]
+                        "enum": ["esm-catalog", "esm-vocabulary", "esm-asset"]
                       }
                     }
                   }
@@ -84,12 +74,7 @@
               },
               {
                 "description": "ESM catalog linking to a CSV file, roles includes `esm-catalog`",
-                "required": [
-                  "type",
-                  "roles",
-                  "esm:data_field",
-                  "esm:format"
-                ],
+                "required": ["type", "roles", "esm:data_field", "esm:format"],
                 "properties": {
                   "type": {
                     "type": "string",
@@ -113,10 +98,7 @@
                 }
               },
               {
-                "required": [
-                  "roles",
-                  "esm:attribute_field"
-                ],
+                "required": ["roles", "esm:attribute_field"],
                 "properties": {
                   "roles": {
                     "type": "array",
@@ -132,10 +114,7 @@
                 }
               },
               {
-                "required": [
-                  "roles",
-                  "esm:row"
-                ],
+                "required": ["roles", "esm:row"],
                 "properties": {
                   "roles": {
                     "type": "array",
@@ -177,9 +156,7 @@
         },
         "esm:aggregation_control": {
           "type": "object",
-          "required": [
-            "variable_field"
-          ],
+          "required": ["variable_field"],
           "properties": {
             "variable_field": {
               "title": "Variable Column Name",
@@ -197,18 +174,12 @@
               "type": "array",
               "items": {
                 "type": "object",
-                "required": [
-                  "type"
-                ],
+                "required": ["type"],
                 "properties": {
                   "type": {
                     "title": "Type of aggregration",
                     "description": "Type of aggregation operation to apply.",
-                    "enum": [
-                      "join_new",
-                      "join_existing",
-                      "union"
-                    ],
+                    "enum": ["join_new", "join_existing", "union"],
                     "type": "string"
                   },
                   "attribute_name": {
