@@ -1,13 +1,9 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/NCAR/esm-collection-spec/v1.0.0/esm-collection/json-schema/schema.json#",
   "title": "ESM Extension Specification",
   "description": "This object represents Collections in a Earth System Model Catalog.",
   "allOf": [
-    {
-      "$ref": "https://schemas.stacspec.org/v1.0.0-beta.2/collection-spec/json-schema/collection.json"
-    },
-    {
-      "$ref": "https://schemas.stacspec.org/v1.0.0-beta.2/extensions/collection-assets/json-schema/schema.json"
-    },
     {
       "$ref": "#/definitions/esm"
     }
@@ -15,37 +11,64 @@
   "definitions": {
     "esm": {
       "type": "object",
-      "required": ["esm:attributes"],
+      "required": [
+        "stac_extensions",
+        "assets",
+        "esm:attributes"
+      ],
       "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "enum": [
+              "collection-assets",
+              "https://raw.githubusercontent.com/NCAR/esm-collection-spec/v1.0.0/esm-collection/json-schema/schema.json"
+            ]
+          }
+        },
         "assets": {
           "type": "object",
           "additionalProperties": {
-            "type": "object",
+            "required": [
+              "href"
+            ],
+            "properties": {
+              "href": {
+                "title": "Asset reference",
+                "type": "string"
+              },
+              "type": {
+                "title": "Asset type",
+                "type": "string"
+              },
+              "roles": {
+                "title": "Asset roles",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
             "oneOf": [
               {
-                "allOf": [
-                  {
-                    "$ref": "https://schemas.stacspec.org/v1.0.0-beta.2/item-spec/json-schema/item.json#/definitions/asset"
-                  },
-                  {
-                    "properties": {
-                      "roles": {
-                        "type": "array",
-                        "items": {
-                          "not": {
-                            "enum": [
-                              "esm-catalog",
-                              "esm-vocabulary",
-                              "esm-data"
-                            ]
-                          }
-                        }
+                "description": "Normal assets that are not specific to the esm spec, e.g. a thumbnail.",
+                "properties": {
+                  "roles": {
+                    "type": "array",
+                    "items": {
+                      "not": {
+                        "enum": [
+                          "esm-catalog",
+                          "esm-vocabulary",
+                          "esm-asset"
+                        ]
                       }
                     }
                   }
-                ]
+                }
               },
               {
+                "description": "ESM catalog linking to a CSV file, roles includes `esm-catalog`",
                 "required": ["type", "roles", "esm:data_field", "esm:format"],
                 "properties": {
                   "type": {
@@ -54,9 +77,7 @@
                   },
                   "roles": {
                     "type": "array",
-                    "maxItems": 1,
                     "items": {
-                      "type": "string",
                       "const": "esm-catalog"
                     }
                   },
@@ -82,9 +103,7 @@
                 "properties": {
                   "roles": {
                     "type": "array",
-                    "maxItems": 1,
                     "items": {
-                      "type": "string",
                       "const": "esm-vocabulary"
                     }
                   },
@@ -100,10 +119,16 @@
                 "properties": {
                   "roles": {
                     "type": "array",
-                    "maxItems": 1,
                     "items": {
-                      "type": "string",
-                      "const": "esm-data"
+                      "const": "esm-asset"
+                    }
+                  },
+                  "esm:columns": {
+                    "title": "Columns",
+                    "description": "Column Names as with with their values",
+                    "type": "object",
+                    "additionalProperties": {
+                      "description": "Any type"
                     }
                   }
                 }
