@@ -9,6 +9,21 @@
     }
   ],
   "definitions": {
+    "esm:data_field": {
+      "title": "Column Name",
+      "description": "The name of the column containing the path to the asset.",
+      "type": "string"
+    },
+    "esm:format": {
+      "title": "Format",
+      "description": "The file/data format of the assets.",
+      "type": "string"
+    },
+    "esm:format_field": {
+      "title": "Format Column Name",
+      "description": "The column name which contains the data format.",
+      "type": "string"
+    },
     "esm": {
       "type": "object",
       "required": [
@@ -87,19 +102,13 @@
                     }
                   },
                   "esm:data_field": {
-                    "title": "Column Name",
-                    "description": "The name of the column containing the path to the asset.",
-                    "type": "string"
+                    "$ref": "#/definitions/esm:data_field"
                   },
                   "esm:format": {
-                    "title": "Format",
-                    "description": "The file/data format of the assets.",
-                    "type": "string"
+                    "$ref": "#/definitions/esm:format"
                   },
                   "esm:format_field": {
-                    "title": "Format Column Name",
-                    "description": "The column name which contains the data format.",
-                    "type": "string"
+                    "$ref": "#/definitions/esm:format_field"
                   }
                 }
               },
@@ -141,6 +150,15 @@
                     "additionalProperties": {
                       "description": "Any type"
                     }
+                  },
+                  "esm:data_field": {
+                    "$ref": "#/definitions/esm:data_field"
+                  },
+                  "esm:format": {
+                    "$ref": "#/definitions/esm:format"
+                  },
+                  "esm:format_field": {
+                    "$ref": "#/definitions/esm:format_field"
                   }
                 }
               }
