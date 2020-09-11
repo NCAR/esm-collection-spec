@@ -69,7 +69,12 @@
               },
               {
                 "description": "ESM catalog linking to a CSV file, roles includes `esm-catalog`",
-                "required": ["type", "roles", "esm:data_field", "esm:format"],
+                "required": [
+                  "type",
+                  "roles",
+                  "esm:data_field",
+                  "esm:format"
+                ],
                 "properties": {
                   "type": {
                     "type": "string",
@@ -99,7 +104,10 @@
                 }
               },
               {
-                "required": ["roles", "esm:attribute_field"],
+                "required": [
+                  "roles",
+                  "esm:attribute_field"
+                ],
                 "properties": {
                   "roles": {
                     "type": "array",
@@ -115,7 +123,10 @@
                 }
               },
               {
-                "required": ["roles"],
+                "required": [
+                  "roles",
+                  "esm:row"
+                ],
                 "properties": {
                   "roles": {
                     "type": "array",
@@ -123,9 +134,9 @@
                       "const": "esm-asset"
                     }
                   },
-                  "esm:columns": {
-                    "title": "Columns",
-                    "description": "Column Names as with with their values",
+                  "esm:row": {
+                    "title": "Row",
+                    "description": "Column Names as with with their values from the respective row described here",
                     "type": "object",
                     "additionalProperties": {
                       "description": "Any type"
@@ -148,7 +159,9 @@
         },
         "esm:aggregation_control": {
           "type": "object",
-          "required": ["variable_field"],
+          "required": [
+            "variable_field"
+          ],
           "properties": {
             "variable_field": {
               "title": "Variable Column Name",
@@ -166,12 +179,18 @@
               "type": "array",
               "items": {
                 "type": "object",
-                "required": ["type"],
+                "required": [
+                  "type"
+                ],
                 "properties": {
                   "type": {
                     "title": "Type of aggregration",
                     "description": "Type of aggregation operation to apply.",
-                    "enum": ["join_new", "join_existing", "union"],
+                    "enum": [
+                      "join_new",
+                      "join_existing",
+                      "union"
+                    ],
                     "type": "string"
                   },
                   "attribute_name": {
