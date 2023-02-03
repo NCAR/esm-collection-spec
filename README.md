@@ -1,3 +1,12 @@
+
+:warning: Archived Repository Notice
+
+This repository has been archived and is no longer actively maintained. The code and information contained within this repository may be outdated and may no longer be relevant to current usage.
+
+**Development of this project has moved to https://github.com/intake/intake-esm and the up-to-date spec resides [here](https://github.com/intake/intake-esm/blob/main/docs/source/reference/esm-catalog-spec.md). Please check the https://github.com/intake/intake-esm repository for the latest updates and actively maintained specification.**
+
+
+
 # ESM Catalog Specification
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/NCAR/esm-collection-spec/CI?label=CI&logo=github&style=for-the-badge)](https://github.com/NCAR/esm-collection-spec/actions?query=workflow%3ACI)
